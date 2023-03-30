@@ -127,12 +127,13 @@ class B extends A {
 3. You can specify the path to the packages using '-classpath' while compiling using 'javac' in commandline.
 
 ### Access Modifiers
-           | private |  No Modifier |   Protected   |  public |
-| ---      | ---     | ---          | ---           | ---    |    
-|Same Class|    Yes  |       Yes    |       Yes     |    Yes |
-|Same Package Subclass|   No|         Yes    |       Yes     |    Yes |
-|Same Package Non-subclass|   No|         Yes |           Yes |             Yes|
-|Different Package+Subclass| No |        No   |         Yes     |        Yes |
-
-| Different package Non-Subclass|      |  No |      |   No|           No |             Yes|
-
+ | ---                            | private  |  no modifier |   protected   |  public |
+ | ---                            | ---      | ---          | ---           | ---     |    
+ | Same Class                     |   Yes    |    Yes       |      Yes      |   Yes   |
+ | Same Package subclass          |   No     |    Yes       |      Yes      |   Yes   |
+ | Same Package Non-subclass      |   No     |    Yes       |      Yes      |   Yes   |
+ | Different Package subclass     |   No     |    No        |      Yes      |   Yes   |
+ | Different package Non-Subclass |   No     |    No        |      No       |   Yes   |
+ 
+For first line, methods/variables with private, protected, public or without modifiers can be accessed within the same class. 
+Second line, the private methods/variables are not not accessible for the sub-class within same package but other defined as protected/no modifier/public are accessible.
