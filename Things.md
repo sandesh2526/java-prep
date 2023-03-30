@@ -1,0 +1,138 @@
+# Java Prep
+
+## How Java Works
+Java code is first compiled into java bytecode and stored in a classfile. This Bytecode is then fed to JVM where it is optimised using JIT and interpreted into source code.
+
+## Three OOP principles
+
+### Encapsulation: 
+This is mechanism by which binds together code and data. Also it keeps safe the data and the code from other interfernce. It is acheived in java by class.
+
+### Inheritance: 
+Inheritance is process by which one object can inherit properties of other object. One class can inherit the other using the extends keyword. You know right?:>
+
+### Polymorphism: 
+It means one thing having many forms. So you can define a method and have different methods as per the need(Method 'Overloading')or we can have a method which can be implementes as per the demand(Method 'Overriding');
+
+## Method 'Overloading' in Java
+Methods can have same name but they can implement different functionalities. The overloaded methods must have different number of parameters.
+NOTE: Having different return type is not sufficient to distinguish overloaded methods.
+
+## Memory allocation for objects in Java
+All objects are allocated memory at runtime using the 'new' keyword. The object will continue to exists as long as there is a refernce to the object.
+
+## Access Modifiers
+Public: The member variables can be accessed from anywhere within a program. 
+Private: Member variable can be accessed within the class only 
+Protected: The variables can be accessed by the inherited classes only and for inherited classes they will be 'private'.
+Default: If you don't define the access modifier the variables will be accessible within the package.
+
+## Inner classes
+We can nest the class inside other class, called the inner classes. We also define the classes inside other blocks of code like 'for' loop. This classes are divided into two types: Static Inner Classes and Non-Static classes.
+Static Classes: This are inner classes defined as 'static' which can access the member variables of enclosing class by creating a object of the enclosing class(You know right :>)                        
+Non-Static Classes: The non-static classes can access the member variables of the class.;
+
+## Strings and their immutability
+Strings are not primitive data type in java as they are defined as Class in java. When you define a String, you actually create the object of it. For e.g. The String is the defined inside a sysout(This is also String) is also a object of String class. So each time you create assign a value to String type variable in java, the string is first searched in the java and if it is present then its reference will be assigned to the current string. If String is not present with given value then a new String object is created and that objects reference is assigned to the String variable.
+
+## Why Strings are immutable in java?
+1. It saves us space as if the string with similar name does exist then we can use that string objects reference and assign it to new variable.
+2. The string will be thread safe as we can not modify the String instead we have to assign a new reference to that variable.
+
+## 'this' & 'super'
+
+### 'this' 
+Sometimes method meed to refer to object that invoked the method for this purpose we use 'this' keyword.
+
+### 'super'
+Whenever subclass needs to refer its immediate superclass it can do that by using the 'super' keyword.
+To access super class constructor, we can use: 
+super(arg-list);
+We can also use the 'super' to access the instance methods or variables of the superclass. 
+.: super.methodName();super.variableName();
+
+## VarArgs (Variable Length Arguments)
+In java we can pass variable number of arguments to a method, we can do so by using array of the type we want to pass, as shown below: 
+someMethod(int array[]);
+but if we have variable number of arguments, as follows: 
+someMethod(1,2,2,5,2); someMethod(1,2);
+Then in this case we must first package this values as a array and then pass to the someMethod().
+For this java defines the 'varargs', so that we can pass variable arguments to a method. we can do so by: 
+someMethod(int ...a);
+now the a will act as array and we can use it as normal array, but we get the additional functionality to pass arguments as: someMethod(1,2,3,4,5,6);someMethod(1,2,2);
+someMethod(); // It works without parameter as well 
+
+## Method Overriding
+In a class hierarchy when a method in a subclass have same name & type signature as a method in superclass then we say that method is overriden in subclass. 
+So by overriding a method we can hide its version in superclass.
+Note: A superclass variable can refer to a subclass object.
+
+## Dynamic Method Dispatch
+Dynamic Method Dispatch is a mechanism by which a call to the overriden method is resolved at runtime.
+So java at runtime defines, which overriden method should be called. 
+This is done by using a superclass refence which is assigned the value of the subclass reference, so JRE checks which type of method is referred to, and calls the method of referring object.  
+
+## Abstract Classes
+A abstract class is defined by keyword 'abstract' and which contains atleast one abstract method, where abstract method is a method that is implemented by the subclass.
+
+So abstract classes define a generalized form that will be shared by all its subclasses, leaving the responsibility to fill the details to the subclass.
+
+## 'final' keyword
+A final keyword have three uses: 
+### Declare constant equivalent
+To declare a constant equivalent in java, we use the 'final' keyword. 
+We can initiate the variables in two ways: 
+1. We can initiate the variable at the time of declaration as :
+final double PI = 3.1426;
+2. We can declare variable as class member and then we can define its value inside the constructor. See below:
+class A {
+    final double PI;
+    A() {
+        PI = 3.1426;
+    }
+}
+
+### Prevent method overriding
+To prevent a method to be overriden in subclasses, we can 
+declare that method as 'final'. 
+#### Early and Late Binding 
+##### Early Binding
+When a method is declared as 'final'
+##### Late Binding
+When a method is overriden by its subclass, we resolve the method at the runtime using the 'Dynamic Method Dispatch' it is called as Late Binding 
+class A {
+    final void method(){
+        // do something
+    }
+}
+class B extends A {
+    void method() {
+        // gives error as superclass has declred this 
+        // method as 'final'
+    }
+}
+
+### To prevent class from getting inherited
+To prevent a class from getting inheritted, we can declare that class as 'final'.
+final class A {
+    // define Structure
+} 
+class B extends A {
+    // Gives error as the A is declared 'final'
+}
+
+### How JRE looks for the packages?
+1. If we declare it in subdirectory JRE will resolve it automatically.
+2. We can define paths to the packages using environmental variable called 'classpath'.
+3. You can specify the path to the packages using '-classpath' while compiling using 'javac' in commandline.
+
+### Access Modifiers
+           | private |  No Modifier |   Protected   |  public |
+| ---      | ---     | ---          | ---           | ---    |    
+|Same Class|    Yes  |       Yes    |       Yes     |    Yes |
+|Same Package Subclass|   No|         Yes    |       Yes     |    Yes |
+|Same Package Non-subclass|   No|         Yes |           Yes |             Yes|
+|Different Package+Subclass| No |        No   |         Yes     |        Yes |
+
+| Different package Non-Subclass|      |  No |      |   No|           No |             Yes|
+
