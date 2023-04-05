@@ -74,7 +74,7 @@ This is done by using a superclass refence which is assigned the value of the su
 
 ## Abstract Classes
 A abstract class is defined by keyword 'abstract' and which contains atleast one abstract method, where abstract method is a method that is implemented by the subclass.
-
+Every abstract method must be implemented by the subclass. 
 So abstract classes define a generalized form that will be shared by all its subclasses, leaving the responsibility to fill the details to the subclass.
 
 ## 'final' keyword
@@ -137,3 +137,33 @@ class B extends A {
  
 For first line, methods/variables with private, protected, public or without modifiers can be accessed within the same class. 
 Second line, the private methods/variables are not not accessible for the sub-class within same package but other defined as protected/no modifier/public are accessible.
+
+### Interfaces
+We use interfaces to hide the implementation of methods from other classes. For e.g. if you have a class Shape with method 'area' and a class Rectangle which also should have a method named 'area' as it is a 'Shape'. Now there is a method named print area, this method will print the area of a Shape and it does not care which 'Shape' it is printing the area for, so in this case we will use a object of the 'Shape' interface to print the area.
+
+### variables in interface
+Variables inside the interface are by default public, static and final. So 
+
+### intreface vs abstract
+Once we declare a interface can only contain static and default methods the interfaces. 
+The abstract class can contain the normal methods as well as abstract methods which will declare the method definition and not the body, the body is given by the class which extends the abstract class.
+Abstract methods does not have the restrictions of access modifiers where as methods of interface are implicitly public. Here for abstract classes we can have a implemented method as protected but for the interface the implemented method must be public.
+```
+abstract class A {
+    abstract void someMethod();
+}
+interface I {
+    void someMethod1();
+}
+
+class MainClass extends A implements I {
+    protected void someMethod() {
+        System.out.println("Inside a protected abstract implemented");
+    }
+    // Following gives an error, as the methods implemented by the interface should be public
+    protected void someMethod1() {
+        System.out.println("Inside a protected abstract implemented");
+    }
+}
+```
+
