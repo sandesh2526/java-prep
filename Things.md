@@ -22,13 +22,14 @@ This Bytecode is then fed to JVM where it is optimised using JIT and interpreted
 
 ### Encapsulation:
 This is mechanism which binds together code and data. Also it keeps safe the data and the code from other interfernce. It is acheived in java by class. A class in java contains variables and methods. The variables in java represents the state of the class and methods  represents the behaviour. 
-Simply put if you have a class named 'Person' and it contains a variable named 'emotion'and method named 'setEmotionToHappy', now if you want to know the state of a 'Person' you will check the 'emotion' variable and if you want to make change his emotion we can call the method 'setEmotionToHappy' which changes the emotion to happy. Too serious x).
+Simply put if you have a class named 'Pet' and it contains a variable named 'emotion'and method named 'setEmotionToHappy', now if you want to know the state of a 'Pet' you will check the 'emotion' variable and if you want to make change his emotion we can call the method 'setEmotionToHappy' which changes the emotion to happy.
 
 ### Inheritance:
-Inheritance is process by which one object can inherit properties of other object. One class can inherit the other using the extends keyword. Now let's say the Person class has a method named If a You know right?:>
+Inheritance is process by which one object can inherit properties of other object. One class can inherit the other using the extends keyword. Now the 'Pet' class has 'setEmotionToHappy' and if we have class named 'Dog' which also should also contain the method 'setEmotionToHappy' then we can just 'extend' the 'Pet' class to include the 'setEmotionToHappy' method.
 
 ### Polymorphism:
-It means one thing having many forms. So you can define a method and have different methods as per the need(Method 'Overloading')or we can have a method which can be implementes as per the demand(Method 'Overriding');
+It means one thing having many forms. So you can define a method and have different methods as per the need(Method 'Overloading')or we can have a method which can be implementes as per the demand(Method 'Overriding')
+Now let's say our 'Pet' class has a method named 
 
 ## [ Method 'Overloading' in Java ](./Files_with_Code/Method-Overloading.md)
 
