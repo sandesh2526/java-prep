@@ -1,2 +1,2 @@
 # java-prep
-A preparation guide for java interview
+A guide for some java concepts
