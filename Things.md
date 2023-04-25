@@ -2,26 +2,32 @@
 ## Features of Java
 ### Portable
 Java is highly portable language as it follows the 'write once run anywhere' model.
+
 ### Robust
 The memory in java is allocated at runtime and it is handled by the Java Garbage Collector, which takes care of memory management.
+
 ### Object Oriented 
 Everything in java is a object except from the primitive data types which are high performance nonobjects.
+
 ### Multithreded
 Java supports multithreading which allows you to use resources efficiently.
 
+
 ## How Java Works
-Java code is first compiled into java bytecode and stored in a classfile(once compiled a .java is compiled it creates .class file).
+Java code is first compiled into java bytecode and stored in a classfile(once a '.java' file is compiled, java compiler creates a '.class' file).
+
 This Bytecode is then fed to JVM where it is optimised using JIT and interpreted into source code and then executed.
 
 ## Three OOP principles
 
-### Encapsulation: 
-This is mechanism by which binds together code and data. Also it keeps safe the data and the code from other interfernce. It is acheived in java by class.
+### Encapsulation:
+This is mechanism which binds together code and data. Also it keeps safe the data and the code from other interfernce. It is acheived in java by class. A class in java contains variables and methods. The variables in java represents the state of the class and methods  represents the behaviour. 
+Simply put if you have a class named 'Person' and it contains a variable named 'emotion'and method named 'setEmotionToHappy', now if you want to know the state of a 'Person' you will check the 'emotion' variable and if you want to make change his emotion we can call the method 'setEmotionToHappy' which changes the emotion to happy. Too serious x).
 
-### Inheritance: 
-Inheritance is process by which one object can inherit properties of other object. One class can inherit the other using the extends keyword. You know right?:>
+### Inheritance:
+Inheritance is process by which one object can inherit properties of other object. One class can inherit the other using the extends keyword. Now let's say the Person class has a method named If a You know right?:>
 
-### Polymorphism: 
+### Polymorphism:
 It means one thing having many forms. So you can define a method and have different methods as per the need(Method 'Overloading')or we can have a method which can be implementes as per the demand(Method 'Overriding');
 
 ## [ Method 'Overloading' in Java ](./Files_with_Code/Method-Overloading.md)
@@ -338,7 +344,3 @@ class MainClass {
 
 
 
-
-
-
-3
