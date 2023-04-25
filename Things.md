@@ -1,5 +1,7 @@
 # Java Prep
+
 ## Features of Java
+
 ### Portable
 Java is highly portable language as it follows the 'write once run anywhere' model.
 
@@ -7,16 +9,16 @@ Java is highly portable language as it follows the 'write once run anywhere' mod
 The memory in java is allocated at runtime and it is handled by the Java Garbage Collector, which takes care of memory management.
 
 ### Object Oriented 
-Everything in java is a object except for the primitive data types which are high  performance nonobjects.
+Everything in java is a object except for the primitive data types which are high  performance non-objects.
 
 ### Multithreded
-Java supports multithreading which allows you to use resources efficiently. 
+Java supports multithreading which allows you to use resources efficiently. So you can use multi core architecture more efficiently. 
 
 
 ## How Java Works
 Java code is first compiled into java bytecode and stored in a classfile(once a '.java' file is compiled, java compiler creates a '.class' file).
 
-This Bytecode is then fed to JVM, where it is optimized using JIT and interpreted into source code and then executed.
+This Bytecode is then fed to JVM, where it is optimized using JIT(rearrange, delete and updates the instructions), interpreted into source code and then executed.
 
 ## Three OOP principles
 
@@ -31,6 +33,7 @@ If we have a class named 'SimpleHouse' and another class named 'Mansion', we wan
 ### Polymorphism:
 It means one thing having many forms. So you can define a method and have different methods as per the need(Method 'Overloading')or we can have a method which can be implementes as per the demand(Method 'Overriding').
 If our 'Pet' class can have method named 'feed' which will accept a type of food and then feed that to our pet. Now you can give different type of food to your pet, for example we can give 'Milk' we can give 'Pedigree' so your method should accept different kinds of food to feed your pet. So for such scenarios we can have multiple methods with same name but it can accept different type of food. This is known as method overloading. 
+Now think if you have a 'sound' method inside the 'Pet' class, as such we can have different Pet's like Cat or Dog and each one will make different sound. Dog will go like "grr" cat will go like "meow" or the Japanese cat can sound like "nyan" X). In such cases we can write Dog class which inherits all the properties of Pet, but it should have different sound than any other Pet in such case we can write the method 'sound' in Dog class which will have same method as Pet but will return a different sound. So this is called as method overloading.
 
 ## [ Method 'Overloading' in Java ](./Files_with_Code/Method-Overloading.md)
 
