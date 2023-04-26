@@ -38,25 +38,27 @@ Methods can have same name but they can implement different functionalities. The
 NOTE: Having different return type is not sufficient to distinguish overloaded methods.
 
 ## Memory allocation for objects in Java
-All objects are allocated memory at runtime using the 'new' keyword. The object will continue to exists as long as there is a refernce to the object. Once all the 
+All objects are allocated memory at runtime using the 'new' keyword. The object will continue to exists as long as there is a refernce to the object. Once all the references to the object are removed, the memory occupied by the object is freed in next garbage collection cycle.
 
 ## Access Modifiers
 Public: The member variables can be accessed from anywhere within a program. 
 Private: Member variable can be accessed within the class only 
 Protected: The variables can be accessed by the inherited classes only and for inherited classes they will be 'private'.
-Default: If you don't define the access modifier the variables will be accessible within the package.
+Default: If you don't define the access modifier, the variables will be accessible within the package.
 
 ## Inner classes
 We can nest the class inside other class, called the inner classes. We also define the classes inside other blocks of code like 'for' loop. This classes are divided into two types: Static Inner Classes and Non-Static classes.
 Static Classes: This are inner classes defined as 'static' which can access the member variables of enclosing class by creating a object of the enclosing class(You know right :>)                        
-Non-Static Classes: The non-static classes can access the member variables of the class.;
+Non-Static Classes: The non-static classes can access the member variables of the class.
 
 ## Strings and their immutability
-Strings are not primitive data type in java as they are defined as Class in java. When you define a String, you actually create the object of it. For e.g. The String is the defined inside a sysout(This is also String) is also a object of String class. So each time you create assign a value to String type variable in java, the string is first searched in the java and if it is present then its reference will be assigned to the current string. If String is not present with given value then a new String object is created and that objects reference is assigned to the String variable.
+Strings are not primitive data type in java as they are defined as class in java. When you define a String, you actually create the object of it. For e.g. The String is the defined inside a sysout("This is also String") is also a object of String class. So each time you create assign a value to String type variable in java, the string is first searched in the java string pool and if it is present then its reference will be assigned to the current string. If String is not present with given value then a new String object is created in string pool and that objects reference is assigned to the String variable.
+
+Note: The string pool is space within the Java heap which is used to store the strings.
 
 ## Why Strings are immutable in java?
-1. It saves us space as if the string with similar name does exist then we can use that string objects reference and assign it to new variable.
-2. The string will be thread safe as we can not modify the String instead we have to assign a new reference to that variable.
+1. It saves us space, if string with similar name does exist then we can use that string objects reference and assign it to new variable.
+2. The string is thread safe as we can not modify the string object(as immutable), instead we have to assign a new reference to that variable.
 
 ## 'this' & 'super'
 
@@ -68,8 +70,10 @@ Whenever subclass needs to refer its immediate superclass it can do that by usin
 To access super class constructor, we can use: 
 super(arg-list);
 We can also use the 'super' to access the instance methods or variables of the superclass. 
-.: super.methodName();super.variableName();
-
+```
+super.methodName();
+super.variableName();
+```
 ## VarArgs (Variable Length Arguments)
 In java we can pass variable number of arguments to a method, we can do so by using array of the type we want to pass, as shown below:
 ```
