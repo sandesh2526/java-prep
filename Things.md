@@ -1,4 +1,5 @@
 # Java Prep
+
 ## Features of Java
 ### Portable
 Java is highly portable language as it follows the 'write once run anywhere' model.
@@ -7,10 +8,10 @@ Java is highly portable language as it follows the 'write once run anywhere' mod
 The memory in java is allocated at runtime and it is handled by the Java Garbage Collector, which takes care of memory management.
 
 ### Object Oriented 
-Everything in java is a object except from the primitive data types which are high performance nonobjects.
+Everything in java is a object except from the primitive data types which are high performance non-objects.
 
 ### Multithreded
-Java supports multithreading which allows you to use resources efficiently.
+Java supports multithreading which allows you to use cpu resoures efficiently.
 
 
 ## How Java Works
@@ -42,6 +43,7 @@ NOTE: Having different return type is not sufficient to distinguish overloaded m
 
 ## Memory allocation for objects in Java
 All objects are allocated memory at runtime using the 'new' keyword. The object will continue to exists as long as there is a refernce to the object. Once all the references to the object are removed, the memory occupied by the object is freed in next garbage collection cycle.
+Java heap is a part of memory inside which  memory for newly created objects is allocated 
 
 ## Access Modifiers
 Public: The member variables can be accessed from anywhere within a program. 
