@@ -18,6 +18,7 @@ Java code is first compiled into java bytecode and stored in a classfile(once a 
 
 This Bytecode is then fed to JVM where it is optimised using JIT and interpreted into source code and then executed.
 
+
 ## Three OOP principles
 
 ### Encapsulation:
@@ -25,11 +26,13 @@ This is mechanism which binds together code and data. Also it keeps safe the dat
 Simply put if you have a class named 'Pet' and it contains a variable named 'emotion'and method named 'setEmotionToHappy', now if you want to know the state of a 'Pet' you will check the 'emotion' variable and if you want to make change his emotion we can call the method 'setEmotionToHappy' which changes the emotion to happy.
 
 ### Inheritance:
-Inheritance is process by which one object can inherit properties of other object. One class can inherit the other using the extends keyword. Now the 'Pet' class has 'setEmotionToHappy' and if we have class named 'Dog' which also should also contain the method 'setEmotionToHappy' then we can just 'extend' the 'Pet' class to include the 'setEmotionToHappy' method.
+Inheritance is process by which one object can inherit properties of other object. One class can inherit the other using the extends keyword. 
+If we have a class named 'SimpleHouse' and another class named 'Mansion', we want the mansion to have all the methods that a simple house will have and we will add additional utilities to it then we can just do so by inheriting those methods from the 'SimpleHouse'. In java we can simply write "Mansion extends Simple house"
 
 ### Polymorphism:
-It means one thing having many forms. So you can define a method and have different methods as per the need(Method 'Overloading')or we can have a method which can be implementes as per the demand(Method 'Overriding')
-Now let's say our 'Pet' class has a method named 
+It means one thing having many forms. So you can define a method and have different methods as per the need(Method 'Overloading')or we can have a method which can be implementes as per the demand(Method 'Overriding').
+If our 'Pet' class can have method named 'feed' which will accept a type of food and then feed that to our pet. Now you can give different type of food to your pet, for example we can give 'Milk' we can give 'Pedigree' so your method should accept different kinds of food to feed your pet. So for such scenarios we can have multiple methods with same name but it can accept different type of food. This is known as method overloading.
+Now think if you have a 'sound' method inside the 'Pet' class, as such we can have different Pet's like Cat or Dog and each one will make different sound. Dog will go like "grr" cat will go like "meow" or the Japanese cat can sound like "nyan" X). In such cases we can write Dog class which inherits all the properties of Pet, but it should have different sound than any other Pet in such case we can write the method 'sound' in Dog class which will have same method as Pet but will return a different sound. So this is called as method overloading
 
 ## [ Method 'Overloading' in Java ](./Files_with_Code/Method-Overloading.md)
 
