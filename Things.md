@@ -33,7 +33,7 @@ If we have a class named 'SimpleHouse' and another class named 'Mansion', we wan
 ### Polymorphism:
 It means one thing having many forms. So you can define a method and have different methods as per the need (Method 'Overloading')or we can have a method which can be implemented as per the demand (Method 'Overriding').
 If we have a class Calculator in which we have a method named add() which can add any two numbers and return the addition. Now if you want to add integers and also you should be able to add the double values, in such scenario you can define add method with different parameters i.e. it can add two different integers or doubles. So we can have add method as 'int add(int a, int b){}' and 'double add(double a, double b){}'. So we have multiple methods with same name but it can accept different type of numbers and add them. This is known as method overloading.
-Now think if you have a 'sound' method inside a 'Pet' class, as such we can have different Pet's like Cat or Dog and each one will make different sound. Dog will go like "grr" cat will go like "meow" or the Japanese cat can sound like "nyan" X). In such cases we can write Dog class which inherits all the properties of Pet, but it should have different sound than any other Pet in such case we can write the method 'sound' in Dog class which will have same signature as Pet but will return a different sound. So this is called as method overloading
+Now think if you have a 'sound' method inside a 'Pet' class, as such we can have different Pet's like Cat or Dog and each one will make different sound. Dog will go like "grr" cat will go like "meow" (or the Japanese cat can sound like "nyan" X). In such cases we can write Dog class which inherits all the properties of Pet, but it should have different sound than any other Pet in such case we can write the method 'sound' in Dog class which will have same signature as Pet but will return a different sound. So this is called as method overloading
 
 ## [ Method 'Overloading' in Java ](./Files_with_Code/Method-Overloading.md)
 
@@ -58,6 +58,7 @@ Non-Static Classes: The non-static classes can access the member variables of th
 
 ## Strings and their immutability
 Strings are not primitive data type in java as they are defined as class in java. When you define a String, you actually create the object of it. For e.g. The String is the defined inside a sysout("This is also String") is also a object of String class. So each time you create assign a value to String type variable in java, the string is first searched in the java string pool and if it is present then its reference will be assigned to the current string. If String is not present with given value then a new String object is created in string pool and that objects reference is assigned to the String variable.
+We have classes like StringBuffer and StringBuilder which supports mutable strings.
 
 Note: The string pool is space within the Java heap which is used to store the strings.
 
@@ -351,6 +352,44 @@ class MainClass {
 
 ``` 
 
+## Collections in Java
+
+Collection: declares the core methods that all collections will have, 
+    Methods:
+        boolean add(E obj) - adds obj to invoking collection
+        boolean addAll(Collection<? extends E>c) - adds all elements to invoking collection from the passed collection
+        void clear() - removes all elements from invoking collection
+        boolean contains(E obj) - if obj exists returns true else false
+        boolean containsAll(Collection<?> c) - returns true if all elements of c is present in invoking collection
+        boolean equals(Object obj) - returnd true if invoking collection is equal to the obj
+        int hashCode() - return hashcode for invoking collection
+        boolean isEmpty() - return true if invoking function is empty
+        Iterator<E> iterator() - returns iterator for invoking collection 
+        boolean remove(Object obj) - removes obj from invoking collection and returns true if successful
+        boolean removeAll(Collection<?>c) - removes all elements of 'c' from invoking collection 
+        int size() - returns the size of the invoking set
+        Stream<E> stream() - returns stream for the given collection
+        Object[] toArray() - returns array 
 
 
+List - stores a sequence of elements, uses a zero-based index, null elements are not allowed in the list,
+A list may contain duplicate element,
+    Methods: 
+    void add(int index, E obj) - Inserts obj into invoking list at the index passed
+    boolean addAll(int index, Collection<? extends E>c) - adds collection values at specified index. returns true if list is changed
+    int indexOf(Object obj) - returns first occurence index of object
+    int lastIndexOf(Object obj) - returns index of last occurence of the 'obj' in list, if not present -1 is returned
+    static <E> List<E> of(parameters) - returns a list of lists which are passed as parameters to 'of' 
+    ListIteratort<E> listIterator() /(int index) - returns iterator for the list / starting from the index
+    E remove(int index) - removes and returns removed element
+    void replaceAll(UnaryOperator<E> op) - we can change all the elements of the list with given op object, which can be defined by a class implementing UnaryOperator<E> interface and overriding apply method (apply specifies the operation to be performed on list elements)
+    void sort(Comparator<? super E> comp) - sorts the list as per the comparator specified
+    List<E> subList(int start,int end) - returns sub list from start index to end   
+        
+Queue - 
 
+Deque
+
+Set
+SortedSet
+NavigableSet
