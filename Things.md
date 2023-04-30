@@ -386,10 +386,37 @@ A list may contain duplicate element,
     void sort(Comparator<? super E> comp) - sorts the list as per the comparator specified
     List<E> subList(int start,int end) - returns sub list from start index to end   
         
-Queue - 
+Set - Set is collection of the unique set of elements
+    Null values are not allowed inside the set
+    static<E> Set<E> copyOf(Collection<? extends E> coll) - returns a unmodifiable set of 'coll'  
+SortedSet - Declares the behaviour of a set in sorted ascending order
+    E first() - returns first element in the list
+    E last() - returns last element in the list
+    SortedSet<E> headSet(E end) - returns the set with values less than end
+    SortedSet<E> tailSet(E start) - returns the set with values greater than start
+    SortedSet<E> subSet(E start, E end) - returns the set greater than start and less than end
 
-Deque
 
-Set
-SortedSet
-NavigableSet
+NavigableSet - declares the behavior of a collection that supports the retrieval of elements based on the closest match to a given value or values
+    E ceiling(E obj) - returns smallest element such that e >= obj else null
+    E floor(E obj) - returns biggest element such that e <= obj else null
+    E higher(E obj) - returns smallest element such that e > obj 
+    E lower(E obj) - returns the largest element, such that e < obj
+    E pollFirst() - returns and removes the first element else returns null
+    E pollLast() - returns and removes the Last element else returns null
+    NavigableSet<E> headSet(E upperBound, boolean incl) - returns set of all elements less than upperBound and includes upperBound if 'incl' is true
+    NavigableSet<E> tailSet(E lowerBound, boolean incl) - returns set of all elements greater than lowerBound and includes lowerBound id 'incl'
+    NavigableSet<E> tailSet(E lowerBound, boolean lowIncl, E upperBound, boolean upperIncl)    
+
+Queue - declares the behavior of a queue,
+which is often a first-in, first-out list. However, there are types of queue 
+    | Method | Description|
+    | ---    | ---        |    
+    | E element() | returns the head of the queue, gives NoSuchElementException if queue is empty|
+    |E peek() | returns the head of the queue if not present then returns null|
+    |boolean offer(E obj) | adds and returns true if successful|
+    |E poll() | removes and returns the head of queue else null|
+    |E remove() | removes and returns the head of queue else NoSuchElementException|
+
+Deque - Double-ended queues can function as standard,first-in, first-out queues or as last-in, first-out stacks.
+
