@@ -398,25 +398,42 @@ SortedSet - Declares the behaviour of a set in sorted ascending order
 
 
 NavigableSet - declares the behavior of a collection that supports the retrieval of elements based on the closest match to a given value or values
-    E ceiling(E obj) - returns smallest element such that e >= obj else null
-    E floor(E obj) - returns biggest element such that e <= obj else null
-    E higher(E obj) - returns smallest element such that e > obj 
-    E lower(E obj) - returns the largest element, such that e < obj
-    E pollFirst() - returns and removes the first element else returns null
-    E pollLast() - returns and removes the Last element else returns null
-    NavigableSet<E> headSet(E upperBound, boolean incl) - returns set of all elements less than upperBound and includes upperBound if 'incl' is true
-    NavigableSet<E> tailSet(E lowerBound, boolean incl) - returns set of all elements greater than lowerBound and includes lowerBound id 'incl'
-    NavigableSet<E> tailSet(E lowerBound, boolean lowIncl, E upperBound, boolean upperIncl)    
+| Method | Description |
+| ---    | ---         |
+| E ceiling(E obj) | returns smallest element such that e >= obj else null |
+| E floor(E obj) | returns biggest element such that e <= obj else null |
+| E higher(E obj) | returns smallest element such that e > obj |
+| E lower(E obj) | returns the largest element, such that e < obj | 
+| E pollFirst() | returns and removes the first element else returns null |
+| E pollLast() | returns and removes the Last element else returns null |
+| NavigableSet<E> headSet(E upperBound, boolean incl) | returns set of all elements less than upperBound and includes upperBound if 'incl' is true |
+| NavigableSet<E> tailSet(E lowerBound, boolean incl) | returns set of all elements greater than lowerBound and includes lowerBound id 'incl' |
+| NavigableSet<E> tailSet(E lowerBound, boolean lowIncl, E upperBound, boolean upperIncl) | |
 
-Queue - declares the behavior of a queue,
+### Queue - declares the behavior of a queue,
 which is often a first-in, first-out list. However, there are types of queue 
-    | Method | Description|
-    | ---    | ---        |    
-    | E element() | returns the head of the queue, gives NoSuchElementException if queue is empty|
-    |E peek() | returns the head of the queue if not present then returns null|
-    |boolean offer(E obj) | adds and returns true if successful|
-    |E poll() | removes and returns the head of queue else null|
-    |E remove() | removes and returns the head of queue else NoSuchElementException|
+
+| Method | Description |
+| ---    | ---         |
+| E element() | returns the head of the queue, gives NoSuchElementException if queue is empty |
+| E peek() | returns the head of the queue if not present then returns null |
+| boolean offer(E obj) | adds and returns true if successful |
+| E poll() | removes and returns the head of queue else null |
+| E remove() | removes and returns the head of queue else NoSuchElementException |
 
 Deque - Double-ended queues can function as standard,first-in, first-out queues or as last-in, first-out stacks.
-
+| Method | Description|
+| ---    | ---        |    
+|void addFirst(E obj)| adds obj to head of queue| |
+|void addLast(E obj) | adds obj to tail of queue|
+|E getFirst() | returns first element in deque.element is not removed|
+|E getLast() | returns last element of deque|
+|boolean offerFirst(E obj)| Inserts the obj at head of queue and returns true if successful|
+|boolean offerLast(E obj)| Inserts the obj at tail of queue and returns true if successful|
+| E peekFirst() | retrns the element at head of queue and is not removed|
+| E peekLast() | returns the element at tail of queue|
+ 1|E pollLast() | returns and removes element at tail|
+| void push(E obj)|add the obj to head|
+| E pop() | Returns and removes the head|
+| E removeFirst() | removes and returns first element|
+| E removeLast() | removes and returns last element|
