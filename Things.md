@@ -420,3 +420,19 @@ which is often a first-in, first-out list. However, there are types of queue
 
 Deque - Double-ended queues can function as standard,first-in, first-out queues or as last-in, first-out stacks.
 
+| Method | Description|
+| ---    | ---        |    
+|void addFirst(E obj)| adds obj to head of queue| |
+|void addLast(E obj) | adds obj to tail of queue|
+|E getFirst() | returns first element in deque.element is not removed|
+|E getLast() | returns last element of deque|
+|boolean offerFirst(E obj)| Inserts the obj at head of queue and returns true if successful|
+|boolean offerLast(E obj)| Inserts the obj at tail of queue and returns true if successful|
+| E peekFirst() | retrns the element at head of queue and is not removed, null if empty|
+| E peekLast() | returns the element at tail of queue|
+| E pollLast() | returns and removes element at tail, null if empty|
+| void push(E obj)|add the obj to head|
+| E pop() | Returns and removes the head|
+| E removeFirst() | removes and returns the head of queue|
+| E removeLast() | removes and returns last element|
+| boolean removeFirstOccurrence(Object obj)| removes first occurence of obj in queue, true if successful|
