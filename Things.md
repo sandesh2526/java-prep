@@ -542,3 +542,49 @@ LinkedList(Collection<? extends E> c) - LinkedList with constructor arg as colle
 
 HashSet extends AbstractSet and implements the Set interface
 It creates a collection that uses a hash table for storage.
+The HashSet has for constructors:
+
+1. HashSet(); - internally creates a HashMap which will have the key as a value in hashset and value as a dummy value named "PRESENT".
+2. HashSet(Collection<? extends E> c) - creates a hashset from 'c'
+3. HashSet(int capacity) - creates a hashset with given capacity(default is 16)
+4. HashSet(int capacity, float fillRatio) - creates HashSet with given capacity and fillRation(load factor)
+
+Methods Avaialable:
+boolean - add/All(E), remove/All(E),conains/All(E), isEmpty(), retainAll(Collection)
+void - clear()
+int - size()
+
+### LinkedHashSet
+
+Linked HashSet extends HashSet and does not add any new members.
+Linked HashSet allows to maintain the order in which the elements are entered
+It has same methods as the hashset
+
+### TreeSet
+
+TreeSet extends AbstractSet and implements the NavigableSet interface. It
+creates a collection that uses a tree for storage. Objects are stored in sorted, ascending order.
+
+It defines following four constructors:
+
+1. TreeSet() - Initializes a empty tree set
+2. TreeSet(Collection c) - Initializes new Treeset with the given collection 'c'
+3. TreeSet(Comparator comp) - creates a treeset which will be ordered as per the given comparator 'comp'
+4. TreeSet(SortedSet ss) - Creates a treeset containing 'ss'
+
+Methods - All methods by Navigable Set such as, headSet(), tailSet() etc.
+
+### Priority Queue
+
+PriorityQueue extends AbstractQueue and implements the Queue interface.
+It creates a queue that is prioritized based on the queue’s comparator.
+
+Constructors -
+PriorityQueue() - empty queue
+PriorityQueue(int capacity) - with capacity
+PriorityQueue(Comparator<? extends E> comp) - with comparator
+PriorityQueue(int capacity,Comparator<? extends E> c) - with capacity and comparator
+PriorityQueue(Collection<? extends E> c) - From collection c
+PriorityQueue(PriorityQueue<? extends E> p) - from priority queue p
+PriorityQueue(SortedSet<? extends E> ss) - create queue from sorted set ss
+
