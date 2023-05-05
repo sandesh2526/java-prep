@@ -589,4 +589,4 @@ PriorityQueue(PriorityQueue<? extends E> p) - from priority queue p
 PriorityQueue(SortedSet<? extends E> ss) - create queue from sorted set ss
 
 
-# final vs finally vs finalize
+## final vs finally vs finalize
