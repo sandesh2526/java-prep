@@ -588,5 +588,8 @@ PriorityQueue(Collection<? extends E> c) - From collection c
 PriorityQueue(PriorityQueue<? extends E> p) - from priority queue p
 PriorityQueue(SortedSet<? extends E> ss) - create queue from sorted set ss
 
-
 ## final vs finally vs finalize
+
+|final|finally|finalize|
+|---  ||---   ||---    |
+|'final' is access specifier|'finally' is used to define the code that must be executed after a exception occurs|'finzlize' is called by 'JVM' when object does not have any references and is going to be garbage collected.|
