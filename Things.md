@@ -514,8 +514,7 @@ Double-ended queues can function as standard,first-in, first-out queues or as la
 
 ### Map
 
-A map is an object that stores associations between keys and values, or
-key/value pairs
+A map is an object that stores key and value pairs. The map interface contains a inner interface called Entry<K,V> which defines each entry's structure inside the map.
 
 ## Collection classes
 
@@ -580,13 +579,22 @@ PriorityQueue extends AbstractQueue and implements the Queue interface.
 It creates a queue that is prioritized based on the queue’s comparator.
 
 Constructors -
-PriorityQueue() - empty queue
-PriorityQueue(int capacity) - with capacity
-PriorityQueue(Comparator<? extends E> comp) - with comparator
-PriorityQueue(int capacity,Comparator<? extends E> c) - with capacity and comparator
-PriorityQueue(Collection<? extends E> c) - From collection c
-PriorityQueue(PriorityQueue<? extends E> p) - from priority queue p
-PriorityQueue(SortedSet<? extends E> ss) - create queue from sorted set ss
+
+1. PriorityQueue() - empty queue
+2. PriorityQueue(int capacity) - with capacity
+3. PriorityQueue(Comparator<? extends E> comp) - with comparator
+4. PriorityQueue(int capacity,Comparator<? extends E> c) - with capacity and comparator
+5. PriorityQueue(Collection<? extends E> c) - From collection c
+6. PriorityQueue(PriorityQueue<? extends E> p) - from priority queue p
+7. PriorityQueue(SortedSet<? extends E> ss) - create queue from sorted set ss
+
+## How Key value pairs are stored inside the hash map
+
+The hash map contains a table which is first initialized with the 16 buckets, these buckets are then filled with the nodes(A map node contains hash, key, value and next variables).
+These buckets are filled with the nodes. For each insertion of node we calculate a hash value using the key-value pair which is used to find the index at which the node is to be stored.
+If hash collision occurs then we store this new node in linked list by assigning the reference of new node to the next variable. It can happen that even though the hash is different for two nodes they might be mapped to same index, in such cases as well we add the node to this linked list.
+When the size of this linked list increases and is more than a predefined threshold(TREEIFY_THRESHOLD), this linked list is converted into a balanced tree.
+For getting a value from hashmap, we use get method which calculates the hash value and which again used to calculate the index, once index is calculated the node at the index is checked. First the hash value is checked if it matches then the key is checked and if the key matches then we return the value for the node.
 
 ## final vs finally vs finalize
 
