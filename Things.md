@@ -91,7 +91,7 @@ To access super class constructor, we can use:
 super(arg-list);
 We can also use the 'super' to access the instance methods or variables of the superclass.
 
-```
+```java
 super.methodName();
 super.variableName();
 ```
@@ -100,13 +100,13 @@ super.variableName();
 
 In java we can pass variable number of arguments to a method, we can do so by using array of the type we want to pass, as shown below:
 
-```
+```java
 someMethod(int array[]);
 ```
 
 but if we have variable number of arguments, as follows:
 
-```
+```java
 someMethod(1,2,2,5,2); 
 someMethod(1,2);
 ```
@@ -114,13 +114,13 @@ someMethod(1,2);
 Then in this case we must first package this values as a array and then pass to the someMethod().
 For this java defines the 'varargs', so that we can pass variable arguments to a method. we can do so by:
 
-```
+```java
 someMethod(int ...a);
 ```
 
 now the a will act as array and we can use it as normal array, but we get the additional functionality to pass arguments as:
 
-```
+```java
 someMethod(1,2,3,4,5,6);
 someMethod(1,2,2);
 someMethod(); // It works without parameter as well 
@@ -330,9 +330,12 @@ public class MainClass
 
 ## intreface vs abstract classes
 
-Once we declare a interface can only contain static and default methods the interfaces.
-The abstract class can contain the normal methods as well as abstract methods which will declare the method definition and not the body, the body is given by the class which extends the abstract class.
-Abstract methods does not have the restrictions of access modifiers where as methods of interface are implicitly public. Here for abstract classes we can have a implemented method as protected but for the interface the implemented method must be public.
+|interface|Abstrct class|
+| ---     |   ---|
+|Once we declare a interface, it can only contain static and default methods.| The abstract class can contain the normal methods as well as abstract methods which will declare the method definition and not the body, the body is given by the class which extends the abstract class.|
+Methods of interface are implicitly public.| Abstract methods inherited from abstract class does not have the restrictions of access modifiers |
+For interface the implemented method must be public.| Here for abstract classes we can have a implemented method as protected |
+| Interfaces provide full abstraction| Abstraction provides partial abstraction |
 
 ```java
 abstract class A {
@@ -419,50 +422,52 @@ class MainClass {
 
 declares the core methods that all collections will have,
     Methods:
-        boolean add(E obj) - adds obj to invoking collection
-        boolean addAll(Collection<? extends E>c) - adds all elements to invoking collection from the passed collection
-        void clear() - removes all elements from invoking collection
-        boolean contains(E obj) - if obj exists returns true else false
-        boolean containsAll(Collection<?> c) - returns true if all elements of c is present in invoking collection
-        boolean equals(Object obj) - returnd true if invoking collection is equal to the obj
-        int hashCode() - return hashcode for invoking collection
-        boolean isEmpty() - return true if invoking function is empty
-        Iterator<E> iterator() - returns iterator for invoking collection
-        boolean remove(Object obj) - removes obj from invoking collection and returns true if successful
-        boolean removeAll(Collection<?>c) - removes all elements of 'c' from invoking collection
-        int size() - returns the size of the invoking set
-        Stream<E> stream() - returns stream for the given collection
-        Object[] toArray() - returns array
+
+1. boolean add(E obj) - adds obj to invoking collection
+2. boolean addAll(Collection<? extends E> c) - adds all elements to invoking collection from the passed collection
+3. void clear() - removes all elements from invoking collection
+4. boolean contains(E obj) - if obj exists returns true else false
+5. boolean containsAll(Collection<?> c) - returns true if all elements of c is present in invoking collection
+6. boolean equals(Object obj) - returnd true if invoking collection is equal to the obj
+7. int hashCode() - return hashcode for invoking collection
+8. boolean isEmpty() - return true if invoking function is empty
+9. Iterator<E> iterator() - returns iterator for invoking collection
+10. boolean remove(Object obj) - removes obj from invoking collection and returns true if successful
+11. boolean removeAll(Collection<?>c) - removes all elements of 'c' from invoking collection
+12. int size() - returns the size of the invoking set
+13. Stream<E> stream() - returns stream for the given collection
+14. Object[] toArray() - returns array
 
 ### List
 
 stores a sequence of elements, uses a zero-based index, null elements are not allowed in the list,
 A list may contain duplicate element,
-    Methods:
-    void add(int index, E obj) - Inserts obj into invoking list at the index passed
-    boolean addAll(int index, Collection<? extends E>c) - adds collection values at specified index. returns true if list is changed
-    int indexOf(Object obj) - returns first occurence index of object
-    int lastIndexOf(Object obj) - returns index of last occurence of the 'obj' in list, if not present -1 is returned
-    static <E> List<E> of(parameters) - returns a list of lists which are passed as parameters to 'of'
-    ListIteratort<E> listIterator() /(int index) - returns iterator for the list / starting from the index
-    E remove(int index) - removes and returns removed element
-    void replaceAll(UnaryOperator<E> op) - we can change all the elements of the list with given op object, which can be defined by a class implementing UnaryOperator<E> interface and overriding apply method (apply specifies the operation to be performed on list elements)
-    void sort(Comparator<? super E> comp) - sorts the list as per the comparator specified
-    List<E> subList(int start,int end) - returns sub list from start index to end
+Methods:
+
+1. void add(int index, E obj) - Inserts obj into invoking list at the index passed
+2. boolean addAll(int index, Collection<? extends E>c) - adds collection values at specified index. returns true if list is changed
+3. int indexOf(Object obj) - returns first occurence index of object
+4. int lastIndexOf(Object obj) - returns index of last occurence of the 'obj' in list, if not present -1 is returned
+5. static <E> List<E> of(parameters) - returns a list of lists which are passed as parameters to 'of'
+6. ListIteratort<E> listIterator() /(int index) - returns iterator for the list / starting from the index
+7. E remove(int index) - removes and returns removed element
+8. void replaceAll(UnaryOperator<E> op) - we can change all the elements of the list with given op object, which can be defined by a class implementing UnaryOperator<E> interface and overriding apply method (apply specifies the operation to be performed on list elements)
+9. void sort(Comparator<? super E> comp) - sorts the list as per the comparator specified
+10. List<E> subList(int start,int end) - returns sub list from start index to end
 
 ### Set
 
-Set is collection of the unique set of elements
-    Null values are not allowed inside the set
-    static<E> Set<E> copyOf(Collection<? extends E> coll) - returns a unmodifiable set of 'coll'  
+Set is collection of the unique set of elements.
+Null values are not allowed inside the set.
+static<E> Set<E> copyOf(Collection<? extends E> coll) - returns a unmodifiable set of 'coll'.
 
 #### SortedSet - Declares the behaviour of a set in sorted ascending order
 
-   E first() - returns first element in the list
-    E last() - returns last element in the list
-    SortedSet<E> headSet(E end) - returns the set with values less than end
-    SortedSet<E> tailSet(E start) - returns the set with values greater than start
-    SortedSet<E> subSet(E start, E end) - returns the set greater than start and less than end
+1. E first() - returns first element in the list
+2. E last() - returns last element in the list
+3. SortedSet<E> headSet(E end) - returns the set with values less than end
+4. SortedSet<E> tailSet(E start) - returns the set with values greater than start
+5. SortedSet<E> subSet(E start, E end) - returns the set greater than start and less than end
 
 #### NavigableSet
 
@@ -515,6 +520,16 @@ Double-ended queues can function as standard,first-in, first-out queues or as la
 ### Map
 
 A map is an object that stores key and value pairs. The map interface contains a inner interface called Entry<K,V> which defines each entry's structure inside the map.
+Map has following methods:
+
+1. V put(K k,V v) - Adds the specified value if key is not present and if key is present it overrides the value. returns null if key was not present and old value if present.
+2. void putAll(Map<..> m) - adds all entries into the map/
+3. V putIfAbsent(K k, V v) - checks if the specified key is not already associated with a value (or is mapped to null), if not then associates it with the given value and returns null, else returns the mapped value
+4. V remove(K) - removes mapping with key K and returns value if present else returns null
+5. boolean remove(K,V) - removes and returns true if K and V are mapped, else returns false
+6. V replace(K,V) - the previous value associated with the specified key, or null if there was no mapping for the key
+7. void clear() - removes all the key-value mappings
+8. V compute(K,BiFunction) - the value is calculated using the BiFunction using the provided inputs and is added map and returned, if func returns null then null is added
 
 ## Collection classes
 
