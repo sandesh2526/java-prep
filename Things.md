@@ -690,5 +690,5 @@ For getting a value from hashmap, we use get method which calculates the hash va
 ## final vs finally vs finalize
 
 |final|finally|finalize|
-|---  ||---   ||---    |
+|---  |---    |---     |
 |'final' is access specifier|'finally' is used to define the code that must be executed after a exception occurs|'finzlize' is called by 'JVM' when object does not have any references and is going to be garbage collected.|
