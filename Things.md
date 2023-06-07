@@ -132,6 +132,82 @@ In a class hierarchy when a method in a subclass have same name & type signature
 So by overriding a method we can hide its version in superclass.
 Note: A superclass variable can refer to a subclass object.
 
+### Method overriding with Exception
+
+1. If the superclass method does not declare an exception, subclass overridden method cannot declare the checked exception.
+
+```java
+import java.io.*;    
+class Parent{   
+  void msg() {  
+    System.out.println("parent method");  
+    }    
+}    
+    
+public class TestExceptionChild extends Parent{    
+
+  void msg() throws IOException {    
+    System.out.println("TestExceptionChild");    
+  }  
+  
+  public static void main(String args[]) {    
+   Parent p = new TestExceptionChild();    
+   p.msg();    
+  }    
+}    
+// Error
+```
+
+2. If the superclass method does not declare an exception, subclass overridden method cannot declare the checked exception but can declare unchecked exception.
+
+```java
+import java.io.*;    
+class Parent{
+  void msg() {
+    System.out.println("parent method");  
+  }
+}    
+ 
+class TestExceptionChild1 extends Parent{  
+  void msg()throws ArithmeticException { 
+    System.out.println("child method");    
+  }
+  
+  public static void main(String args[]) {    
+   Parent p = new TestExceptionChild1();    
+   p.msg();
+  }
+}
+// child method
+```
+
+3. If the superclass method declares an exception, subclass overridden method can declare the same subclass exception or no exception but cannot declare parent exception.
+
+```java
+import java.io.*;    
+class Parent{    
+  void msg()throws ArithmeticException {  
+    System.out.println("parent method");  
+  }    
+}    
+    
+public class TestExceptionChild2 extends Parent{    
+  void msg()throws Exception {  
+    System.out.println("child method");  
+  }    
+    
+  public static void main(String args[]) {    
+   Parent p = new TestExceptionChild2();    
+     
+   try {    
+   p.msg();    
+   }  
+   catch (Exception e){}   
+  }    
+}     
+// Error
+```
+
 ## Dynamic Method Dispatch
 
 Dynamic Method Dispatch is a mechanism by which a call to the overriden method is resolved at runtime.
