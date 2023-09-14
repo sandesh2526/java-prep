@@ -33,7 +33,7 @@ Simply put if you have a class named 'Pet' and it contains a variable named 'emo
 
 ### Inheritance
 
-Inheritance is process by which one object can inherit properties of other object. One class can inherit the other using the extends keyword.
+Inheritance is process by which one class can inherit properties of other class. In java one class can inherit the other class's properties using the extends keyword.
 If we have a class named 'SimpleHouse' and another class named 'Mansion', we want the mansion to have all the methods that a simple house will have and we will add additional utilities to it then we can just do so by inheriting those methods from the 'SimpleHouse'. In java we can simply write "Mansion extends Simple house"
 
 ### Polymorphism
@@ -48,6 +48,8 @@ Methods can have same name but they can implement different functionalities. The
 
 NOTE: Having different return type is not sufficient to distinguish overloaded methods.
 
+If you try to overload methods with the with just return types you will get a compilation error with dublicate method warning.
+
 ## Memory allocation for objects in Java
 
 All objects are allocated memory at runtime using the 'new' keyword. The object will continue to exists as long as there is a refernce to the object. Once all the references to the object are removed, the memory occupied by the object is freed in next garbage collection cycle.
@@ -56,8 +58,11 @@ Java heap is a part of memory inside which  memory for newly created objects is 
 ## Access Modifiers Types
 
 Public: The member variables can be accessed from anywhere within a program.
+
 Private: Member variable can be accessed within the class only
+
 Protected: The variables can be accessed by the inherited classes only and for inherited classes they will be 'private'.
+
 Default: If you don't define the access modifier, the variables will be accessible within the package.
 
 ## Inner classes
@@ -95,6 +100,8 @@ We can also use the 'super' to access the instance methods or variables of the s
 super.methodName();
 super.variableName();
 ```
+
+We can call the super class's main method in child class using 'super' keyword or by directly using static call ( ```MainClassName.main(new String[1])``` ). 
 
 ## VarArgs (Variable Length Arguments)
 
@@ -216,6 +223,8 @@ This is done by using a superclass refence which is assigned the value of the su
 
 ## Abstract Classes
 
+Abastract classes are used to define partial implementation.
+
 A abstract class is defined by keyword 'abstract' and which contains atleast one abstract method, where abstract method is a method that is implemented by the subclass.
 Every abstract method must be implemented by the subclass.
 So abstract classes define a generalized form that will be shared by all its subclasses, leaving the responsibility to fill the details to the subclass.
@@ -229,22 +238,22 @@ A final keyword have three uses:
 To declare a constant equivalent in java, we use the 'final' keyword.
 We can initiate the variables in two ways:
 
-1. We can initiate the variable at the time of declaration as :
+1. We can initiate the variable at the time of declaration as:
 
     ```java
-    final double PI = 3.1426;
+        final double PI = 3.1426;
     ```
 
 2. We can declare variable as class member and then we can define its value inside the constructor. See below:
 
-```java
-class A {
-    final double PI;
-    A() {
-        PI = 3.1426;
+    ```java
+    class A {
+        final double PI;
+        A() {
+            PI = 3.1426;
+        }
     }
-}
-```
+    ```
 
 ### Prevent method overriding
 
@@ -304,11 +313,13 @@ class B extends A {
  | Different package Non-Subclass |   No     |    No        |      No       |   Yes   |
 
 For first line, methods/variables with private, protected, public or without modifiers can be accessed within the same class.
-Second line, the private methods/variables are not not accessible for the sub-class within same package but other defined as protected/no modifier/public are accessible.
+
+Second line, the private methods/variables are not accessible for the sub-class within same package but other defined as protected/no modifier/public are accessible.
 
 ## Interfaces
 
-We use interfaces to hide the implementation of methods from other classes.  For e.g. if you have a class Shape with method 'area' and a class Rectangle which also should have a method named 'area' as it is a 'Shape'. Now there is a method named print area, this method will print the area of a Shape and it does not care which 'Shape' it is printing the area for, so in this case we will use a object of the 'Shape' interface to print the area.
+We use interfaces to hide the implementation of methods from other classes.  
+For e.g. if you have a class Shape with method 'area' and a class Rectangle which also should have a method named 'area' as it is a 'Shape'. Now there is a method named print area, this method will print the area of a Shape and it does not care which 'Shape' it is printing the area for, so in this case we will use a object of the 'Shape' interface to print the area.
 The interfaces can be abstract, public or they can have default access specifier.  
 
 ## variables in interface
@@ -408,7 +419,7 @@ public class MainClass
 
 |interface|Abstrct class|
 | ---     |   ---|
-|Once we declare a interface, it can only contain static and default methods.| The abstract class can contain the normal methods as well as abstract methods which will declare the method definition and not the body, the body is given by the class which extends the abstract class.|
+|Once we declare a interface, it can only contain static and default methods with definition.| The abstract class can contain the normal methods as well as abstract methods which will declare the method definition and not the body, the body is given by the class which extends the abstract class.|
 Methods of interface are implicitly public.| Abstract methods inherited from abstract class does not have the restrictions of access modifiers |
 For interface the implemented method must be public.| Here for abstract classes we can have a implemented method as protected |
 | Interfaces provide full abstraction| Abstraction provides partial abstraction |
@@ -489,7 +500,36 @@ class MainClass {
         Collections.sort(students);
     }
 }
+```
 
+### Comparator
+
+Comparable doesn't give us a way to sort collection by using more than one member variable. To sort the elements the we must pass a "Comparator" object to the method.
+
+```java
+public class Student {
+    String name;
+    int id;
+    int age;
+    Student(int i,String name,int a) {
+        id = i;
+        this.name = name;
+        age = a;
+    }
+}
+class MainClass {
+    public static void main(String[] args) {
+        
+        Comparator<Student> sortById = (Student s1, Student s2) -> s1.id - s2.id;
+        Comparator<Student> sortByAge - (Student s1, Student s2) -> s1.age - s2.age;
+        List<Student> students = new ArrayList<>(8); 
+
+        students.add(new Student(15,"Harry",15));
+        students.add(new Student(5,"Voldemort",17));
+        students.add(new Student(10,"Dobby",14));
+        Collections.sort(students);
+    }
+}
 ```
 
 ## Collections in Java
@@ -681,14 +721,92 @@ Constructors -
 
 ## How Key value pairs are stored inside the hash map
 
-The hash map contains a table which is first initialized with the 16 buckets, these buckets are then filled with the nodes(A map node contains hash, key, value and next variables).
+The hash map contains a table which is first initialized with the 16 buckets, these buckets are then filled with the nodes (A map node contains hash, key, value and next variables).
+
 These buckets are filled with the nodes. For each insertion of node we calculate a hash value using the key-value pair which is used to find the index at which the node is to be stored.
+
 If hash collision occurs then we store this new node in linked list by assigning the reference of new node to the next variable. It can happen that even though the hash is different for two nodes they might be mapped to same index, in such cases as well we add the node to this linked list.
+
 When the size of this linked list increases and is more than a predefined threshold(TREEIFY_THRESHOLD), this linked list is converted into a balanced tree.
+
 For getting a value from hashmap, we use get method which calculates the hash value and which again used to calculate the index, once index is calculated the node at the index is checked. First the hash value is checked if it matches then the key is checked and if the key matches then we return the value for the node.
 
 ## final vs finally vs finalize
 
-|final|finally|finalize|
-|---  |---    |---     |
-|'final' is access specifier|'finally' is used to define the code that must be executed after a exception occurs|'finzlize' is called by 'JVM' when object does not have any references and is going to be garbage collected.|
+| final | finally | finalize |
+| ---   | ---     | ---      |
+| 'final' is access specifier | 'finally' is used to define the code that must be executed after a exception occurs | 'finzlize' is called by 'JVM' when object does not have any references and is going to be garbage collected. |
+
+
+
+
+
+
+## Lambda
+
+One issue with anonymous classes is that if the implementation of your anonymous class is very simple, such as an interface that contains only one method, then the syntax of anonymous classes may  unwieldy and unclear. In these cases, you're usually trying to pass functionality as an argument to another method, such as what action should be taken when someone clicks a button. Lambda expressions enable you to do this, to treat functionality as method argument
+
+Lambdas are instances of functional interfaces
+
+### Why Lambda
+
+1. Enables functional programming
+2. Readable and concise code
+3. Easier-to-use APIs and libraries
+4. Enables support for parallel processing
+
+### Why use functions instead of the objects
+
+To pass a action as a argument and not a object.
+So we previously we used to implement a class and then define its functionality but with lambdas we can define the function which can directly give the implementation.
+
+For e.g. previously we used to write code as follows:
+
+```java
+class SortingUsingId implements Comparator {
+    public int compare(Student s, Student s1) {
+        return s1.id - s2.id;        
+    }
+}
+
+class MainClass {
+    public static void main(String arge[]) {
+        List<Student> students = new ArrayList<>();
+        // Write anonymous class as follows
+        Compartor sortUsingId = new Comparator {
+            int compare(Student s1, Student s2) {
+                return s1.id - s2.id;
+            }
+        }
+        // 
+        Collections.sort(students,sortingUsingId); 
+        // students will be sorted by id
+    }
+}
+```
+
+but now using lambdas we can do as follows:
+
+```java
+class MainClass() {
+    public static void main(String arge[]) {
+        List<Student> students = new ArrayList<>();
+        SortingUsingId sortingUsingId = (Student s1, Student s2) -> s1.id - s2.id;  
+        Collections.sort(students,sortingUsingId); 
+        // can be written as follows as well
+        Collections.sort(students,(Student s1,Student s2) -> s1.id - s2.id);
+        // students will be sorted by id 
+    }
+}
+```
+
+So using lambdas we are passing the action directly to the comparator and not creating any object of the class or interface. So we can say that the lambda is a simpler way to write a anonymous class (They are different!).
+
+We also have many standard functional interfaces which reduces the code by providing the more useful interfaces. Some examples are:
+
+1. Predicate\<E\>: Used to return a true or false values using the lambda functions. 
+2. Consumer\<E\> : Used to accept a functionality and then process it.
+
+```java
+// Write examples here 
+```
