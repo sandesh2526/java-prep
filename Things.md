@@ -738,10 +738,6 @@ For getting a value from hashmap, we use get method which calculates the hash va
 | 'final' is access specifier | 'finally' is used to define the code that must be executed after a exception occurs | 'finzlize' is called by 'JVM' when object does not have any references and is going to be garbage collected. |
 
 
-
-
-
-
 ## Lambda
 
 One issue with anonymous classes is that if the implementation of your anonymous class is very simple, such as an interface that contains only one method, then the syntax of anonymous classes may  unwieldy and unclear. In these cases, you're usually trying to pass functionality as an argument to another method, such as what action should be taken when someone clicks a button. Lambda expressions enable you to do this, to treat functionality as method argument
