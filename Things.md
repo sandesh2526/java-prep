@@ -50,6 +50,18 @@ NOTE: Having different return type is not sufficient to distinguish overloaded m
 
 If you try to overload methods with the with just return types you will get a compilation error with dublicate method warning.
 
+## Class Relationships
+
+In Object-Oriented Programming (OOP), there are generally four types of relationships that can be implemented among classes: inheritance, association, composition, and aggregation 1. These relationships are based on “is-a” relationship, “has-a” relationship, and “part-of” relationship 1.
+
+Inheritance: Inheritance is an “is-a” type of relationship. It is a parent-child relationship where we create a new class by using existing class code. For example, “Apple is a fruit”, “Ferrari is a car” 1.
+
+Association: Association is a relationship between two separate classes that establishes through their objects. It can be one-to-one, one-to-many, many-to-one, or many-to-many. In OOP, an object communicates with another object to use functionality and services provided by that object 2.
+
+Composition: Composition is a “part-of” type of relationship. It is a strong type of association where the lifetime of the contained object depends on the lifetime of the container object. For example, a car has an engine.
+
+Aggregation: Aggregation is a “has-a” type of relationship and is a one-way form of association. It is a weak type of association where the lifetime of the contained object does not depend on the lifetime of the container object. For example, a department has employees 
+
 ## Memory allocation for objects in Java
 
 All objects are allocated memory at runtime using the 'new' keyword. The object will continue to exists as long as there is a refernce to the object. Once all the references to the object are removed, the memory occupied by the object is freed in next garbage collection cycle.
@@ -806,3 +818,4 @@ We also have many standard functional interfaces which reduces the code by provi
 ```java
 // Write examples here 
 ```
+
