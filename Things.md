@@ -39,7 +39,7 @@ If we have a class named 'SimpleHouse' and another class named 'Mansion', we wan
 ### Polymorphism
 
 It means one thing having many forms. So you can define a method and have different methods as per the need (Method 'Overloading')or we can have a method which can be implemented as per the demand (Method 'Overriding').
-If we have a class Calculator in which we have a method named add() which can add any two numbers and return the addition. Now if you want to add integers and also you should be able to add the double values, in such scenario you can define add method with different parameters i.e. it can add two different integers or doubles. So we can have add method as 'int add(int a, int b){}' and 'double add(double a, double b){}'. So we have multiple methods with same name but it can accept different type of numbers and add them. This is known as method overloading.
+If we have a class Calculator in which we have a method named ```add()``` which can add any two numbers and return the addition. Now if you want to add integers and also you should be able to add the double values, in such scenario you can define add method with different parameters i.e. it can add two different integers or doubles. So we can have add method as ```int add(int a, int b){}``` and ```double add(double a, double b){}```. So we have multiple methods with same name but it can accept different type of numbers and add them. This is known as method overloading.
 Now think if you have a 'sound' method inside a 'Pet' class, as such we can have different Pet's like Cat or Dog and each one will make different sound. Dog will go like "grr" cat will go like "meow" (or the Japanese cat can sound like "nyan" X). In such cases we can write Dog class which inherits all the properties of Pet, but it should have different sound than any other Pet in such case we can write the method 'sound' in Dog class which will have same signature as Pet but will return a different sound. So this is called as method overloading
 
 ## [Method 'Overloading' in Java](./Files_with_Code/Method-Overloading.md)
@@ -269,13 +269,13 @@ We can initiate the variables in two ways:
 
 ### Prevent method overriding
 
-To prevent a method to be overriden in subclasses by declaring that method as 'final'.
+To prevent a method to be overriden in subclasses by declaring that method as ```final```.
 
 #### Early and Late Binding
 
 ##### Early Binding
 
-When a method is declared as 'final'
+When a method is declared as ```final```
 
 ##### Late Binding
 
@@ -312,7 +312,7 @@ class B extends A {
 
 1. If we declare it in subdirectory JRE will resolve it automatically.
 2. We can define paths to the packages using environmental variable called 'classpath'.
-3. You can specify the path to the packages using '-classpath' while compiling using 'javac' in commandline.
+3. You can specify the path to the packages using ```-classpath``` while compiling using 'javac' in commandline.
 
 ## Access Modifiers
 
@@ -475,8 +475,8 @@ class MainClass implements B {
 
 ## Comparable versus Comparator
 
-The interfaces Comparable and Comparator both provide a way to sort the collections. Collections have a 'sort()' method which helps in sorting a collections.
-For e.g. we can sort a arraylist named studentList using the 'Collections.sort(studentList)' so general syntax for sorting a colleaction can be written as:
+The interfaces Comparable and Comparator both provide a way to sort the collections. Collections have a ```sort()``` method which helps in sorting a collections.
+For e.g. we can sort a arraylist named studentList using the ```Collections.sort(studentList)``` so general syntax for sorting a colleaction can be written as:
 
 ```java
 Collections.sort(Collection_name);
@@ -486,7 +486,7 @@ We can also pass in a another class object to sort along with Collection_name wh
 
 ### Comparable
 
-The comparable interface defines single method named 'compareTo()'. This method is used to sort the collection, it is defined inside the domain class for which we want to sort elements. For e.g. if we have a Student class for which we have a array list of students which we want to sort according to the roll number. We can implement the Comparable interface in the Student class and then override the 'compareTo()' method. Then we can sort collection using the Collections.sort(). See below example:
+The comparable interface defines single method named ```compareTo()```. This method is used to sort the collection, it is defined inside the domain class for which we want to sort elements. For e.g. if we have a Student class for which we have a array list of students which we want to sort according to the roll number. We can implement the Comparable interface in the Student class and then override the ```compareTo()``` method. Then we can sort collection using the ``` Collections.sort()```. See below example:
 
 ```java
 public class Student implements Comparable<Student> {
