@@ -8,6 +8,14 @@ ORM - An ORM tool simplifies the data creation, data manipulation and data acces
 
 JPA - Java Persistence API (JPA) is a Java specification that provides certain functionality and standard to ORM tools. The javax.persistence package contains the JPA classes and interfaces.
 
+### First Level Cache vs Second Level Cache: 
+
+The first-level cache is a transactional cache that exists per Hibernate session and is not shared among threads 13. This cache makes use of Hibernate’s own caching mechanism 1. The first-level cache stores all the entities known by a specific session 3. When you close the session or perform the “clear” method, the first-level cache gets cleared 3.
+
+The second-level cache is a full shared cache that survives beyond a Hibernate session and can be shared among threads. This cache can be configured on a per-class and per-collection basis and is mainly responsible for caching objects across sessions. You can use a caching implementation that comes with Hibernate like EHCache or something else like JBossCache for this cache.
+
+In summary, the first-level cache is the cache per Hibernate session and is a mandatory cache through which all requests must pass and this cache is not shared among threads. The second-level cache can be configured on a per-class and per-collection basis and is mainly responsible for caching objects across sessions.
+
 ## What are entities?
 
 An entity is a object or thing i real world which can be distinguished from all other objects.  
@@ -104,7 +112,8 @@ public class Student {
 }
 ```
 
-@Temporal
+`@Temporal`
+
 Temporal data types means time related data types such as date,calender etc. @Temporal annotation is used for mapping temporal data types in Java, such as java.util.Date and java.util.Calendar, to SQL types, such as DATE, TIME and TIMESTAMP. 
 
 why we cannot map the temporal data types in java to the SQL data types?
@@ -114,7 +123,8 @@ On the other hand, the SQL standard defines different types of temporal data, su
 
 The @Temporal annotation in JPA is used to fine-tune the mapping between Java date and time types and SQL temporal types. It can have one of the following three values: TemporalType.DATE, TemporalType.TIME, and TemporalType.TIMESTAMP
 
-@Enumerated(EnumType.Type)
+`@Enumerated(EnumType.Type)`
+
 -> The @Enumerated annotation is used to map enum values to database columns in Java JPA. It has two possible values: EnumType.ORDINAL and EnumType.STRING. Depending on the value, the annotation will store the enum value as either its ordinal number or its name. For example, if you have an enum like this:
 
 public enum Status { OPEN, REVIEW, APPROVED, REJECTED; }
@@ -225,18 +235,92 @@ It is also a good practice that each entity class should override the `hashCode`
 
 ### How can you persist a collection in hibernate entity?
 
+We can persist a collection in hibernate using the  `@ElementCollection` 
 
+It will create a new table in the database consisting of the all the values in the collection. These values then can be referred by the main entity using the forign keys which will be set to the primary key of the table. So if a person entity has a primary key as a id and we want to store different addresses for that person using a collection then we can do so by adding the collection. This collection will be marked as `@ElementCollection` which will be created as a new table with foreign key as id in the person table. Now if we want to list all the addresses for a particular student we can do so by calling select query on the newly created table with the student's id. 
 
+```java
+@Entity
+public class Person {
+    @Id
+    Long id;
+    @ElementCollection // creates a table with name Person_addresses
+    List<Address> addresses;
+}
+@Embeddable
+class Address {
+    String City;
+    String Country;
+}
+```
 
+The name of the newly created table for the collection will be `EntityName_variableNameForCollectionInEntity`(in this case, `Person_addresses`) along with the name of the foreign key will be `Entity_variableNameOfPrimaryKeyOfEntity` (In this case, `Person_id`)
 
+So if we want to change these names specified by the Hibernate we can use the `@JoinTable` annotation along with the argument `joinColumns=@JoinColumn(name="user_id")` to change the name of the table and the column. 
 
+We can use the `@JoinTable` as follows: 
 
-### First Level Cache vs Second Level Cache: 
+```java
+@Entity
+public class Person {
+    @Id
+    Long id;
+    @ElementCollection // creates a table with name Person_addresses
+    @JoinTable (name="Addresses", joinColumns = @JoinColumn(name="user_id")
+    ) // you can have multiple columns by containning them in {}(specify as a object)
+    
+    List<Address> addresses;
+}
+@Embeddable
+class Address {
+    String City;
+    String Country;
+}
+```
 
-The first-level cache is a transactional cache that exists per Hibernate session and is not shared among threads 13. This cache makes use of Hibernate’s own caching mechanism 1. The first-level cache stores all the entities known by a specific session 3. When you close the session or perform the “clear” method, the first-level cache gets cleared 3.
+If you have more than one key as primary key you have to define each key along with a name for it. So if you have more than one key inside the embedded id then we have to define the @JoinColumn annotation inside each one using the `{@JoinColumn(key_1),@JoinColumn(key_2)..}`
 
-The second-level cache is a full shared cache that survives beyond a Hibernate session and can be shared among threads. This cache can be configured on a per-class and per-collection basis and is mainly responsible for caching objects across sessions. You can use a caching implementation that comes with Hibernate like EHCache or something else like JBossCache for this cache.
+Now here we are creating a new table for the collection created so we can add the a primary key to this collection. For this purpose we can use the annotation `@CollectionId` which is a <b>hibernate annotation</b> So it is only present in the Hibernate. So if we want to move to another JPA provider we must change this annotation as per the annotation in other implementation.
 
-In summary, the first-level cache is the cache per Hibernate session and is a mandatory cache through which all requests must pass and this cache is not shared among threads. The second-level cache can be configured on a per-class and per-collection basis and is mainly responsible for caching objects across sessions.
+The annotaion `@CollectionId` comes with three fields: 
+`columns` = it will specify the columns to be added as the primary key here we can use one or more columns as primary key
 
+`generator` = specifies the gernerator which the hibernate will use to create the values of the primary key
+
+`type` = Specifies the type of the key, can be int, long etc.
+
+### Lazy and Eager loading in the Hibernate
+
+#### Lazy Loading: 
+
+This is the default behaviour of the hibernate while loading a entity. For this consider a person class with a different addresses that we used previously :
+
+```java
+@Entity
+class Person {
+    @Id
+    int id;
+    @ElementCollection
+    List<Address> addresses;
+}
+
+class AtSomeTimeInCode {
+    List<UserLazy> users = sessionLazy.createQuery("SELECT * FROM Person").list();// loads the addresses here while eager
+
+    Person userLazyLoaded = users.get(3);
+    return (userLazyLoaded.getAddresses()); // loads the addresses here while lazy
+}
+```
+
+So when we load the entity at first we only load the `id` and do not load the addresses(here a new table for the addresses is created) list. 
+
+It improves the loading time as not all info is needs to be loaded at the initialization. 
+
+For this purpose hibernate uses the proxy objects.
+
+#### Eager Loading
+
+As opposed to the lazy loading we can load the entire object at the time of loading. As mentioned in tabove example we will load the addresses at the time of there definition only. 
+
+We can set this behaviour using the `@ElementCollection(fetch = FetchType.EAGER)` in case of loading a collection
 
