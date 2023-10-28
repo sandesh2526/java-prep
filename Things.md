@@ -747,7 +747,7 @@ For getting a value from hashmap, we use get method which calculates the hash va
 
 | final | finally | finalize |
 | ---   | ---     | ---      |
-| 'final' is access specifier | 'finally' is used to define the code that must be executed after a exception occurs | 'finzlize' is called by 'JVM' when object does not have any references and is going to be garbage collected. |
+| 'final' is access specifier | 'finally' is used to define the code that must be executed after the try block | 'finzlize' is called by 'JVM' when object does not have any references and is going to be garbage collected. |
 
 
 ## Lambda
