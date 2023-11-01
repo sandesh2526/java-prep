@@ -1,5 +1,65 @@
 # Java Prep
 
+[Features of Java](#features-of-java)
+
+[How Java Works](#how-java-works)
+
+[Three OOP principles](#three-oop-principles)
+
+[Method 'Overloading' in Java](#method-overloading-in-java)
+
+[Class Relationships](#class-relationships)
+
+[Memory allocation for objects in Java](#memory-allocation-for-objects-in-java)
+
+[Access Modifiers](#access-modifiers)
+
+[Access Modifiers Types](#access-modifiers-types)
+
+[Inner classes](#inner-classes)
+
+[Strings and their immutability](#strings-and-their-immutability)
+
+[Why Strings are immutable in java](#why-strings-are-immutable-in-java)
+
+[`this` and `super`](#this--super)
+
+[VarArgs (Variable Length Arguments)](#varargs-variable-length-arguments)
+
+[Method Overriding](#method-overriding)
+
+[Dynamic Method Dispatch](#dynamic-method-dispatch)
+
+[Abstract Classes](#abstract-classes)
+
+[`final` keyword](#final-keyword)
+
+[How JRE looks for the packages](#how-jre-looks-for-the-packages)
+
+[Interfaces](#interfaces)
+
+[variables in interface](#variables-in-interface)
+
+[Nested Interfaces](#nested-interfaces)
+
+[Methods with body inside interface](#methods-with-body-inside-interface)
+
+[Interface extending interface](#interface-extending-interface)
+
+[intreface vs abstract classes](#intreface-vs-abstract-classes)
+
+[Comparable and Comparator](#comparable-and-comparator)
+
+[Collections in Java](#collections-in-java)
+
+[Collection classes](#collection-classes)
+
+[How Key value pairs are stored inside the hash map](#how-key-value-pairs-are-stored-inside-the-hash-map)
+
+[final vs finally vs finalize](#final-vs-finally-vs-finalize)
+
+
+
 ## Features of Java
 
 ### Portable
@@ -67,6 +127,20 @@ Aggregation: Aggregation is a “has-a” type of relationship and is a one-way 
 All objects are allocated memory at runtime using the 'new' keyword. The object will continue to exists as long as there is a refernce to the object. Once all the references to the object are removed, the memory occupied by the object is freed in next garbage collection cycle.
 Java heap is a part of memory inside which  memory for newly created objects is allocated
 
+## Access Modifiers
+
+ | ---                            | private  |  no modifier |   protected   |  public |
+ | ---                            | ---      | ---          | ---           | ---     |
+ | Same Class                     |   Yes    |    Yes       |      Yes      |   Yes   |
+ | Same Package subclass          |   No     |    Yes       |      Yes      |   Yes   |
+ | Same Package Non-subclass      |   No     |    Yes       |      Yes      |   Yes   |
+ | Different Package subclass     |   No     |    No        |      Yes      |   Yes   |
+ | Different package Non-Subclass |   No     |    No        |      No       |   Yes   |
+
+For first line, methods/variables with private, protected, public or without modifiers can be accessed within the same class.
+
+Second line, the private methods/variables are not accessible for the sub-class within same package but other defined as protected/no modifier/public are accessible.
+
 ## Access Modifiers Types
 
 Public: The member variables can be accessed from anywhere within a program.
@@ -95,7 +169,7 @@ Note: The string pool is space within the Java heap which is used to store the s
 1. It saves us space, if string with similar name does exist then we can use that string objects reference and assign it to new variable.
 2. The string is thread safe as we can not modify the string object(as immutable), instead we have to assign a new reference to that variable.
 
-## 'this' & 'super'
+## `this` & `super`
 
 ### 'this'
 
@@ -241,7 +315,7 @@ A abstract class is defined by keyword 'abstract' and which contains atleast one
 Every abstract method must be implemented by the subclass.
 So abstract classes define a generalized form that will be shared by all its subclasses, leaving the responsibility to fill the details to the subclass.
 
-## 'final' keyword
+## `final` keyword
 
 A final keyword have three uses:
 
@@ -314,20 +388,6 @@ class B extends A {
 2. We can define paths to the packages using environmental variable called 'classpath'.
 3. You can specify the path to the packages using ```-classpath``` while compiling using 'javac' in commandline.
 
-## Access Modifiers
-
- | ---                            | private  |  no modifier |   protected   |  public |
- | ---                            | ---      | ---          | ---           | ---     |
- | Same Class                     |   Yes    |    Yes       |      Yes      |   Yes   |
- | Same Package subclass          |   No     |    Yes       |      Yes      |   Yes   |
- | Same Package Non-subclass      |   No     |    Yes       |      Yes      |   Yes   |
- | Different Package subclass     |   No     |    No        |      Yes      |   Yes   |
- | Different package Non-Subclass |   No     |    No        |      No       |   Yes   |
-
-For first line, methods/variables with private, protected, public or without modifiers can be accessed within the same class.
-
-Second line, the private methods/variables are not accessible for the sub-class within same package but other defined as protected/no modifier/public are accessible.
-
 ## Interfaces
 
 We use interfaces to hide the implementation of methods from other classes.  
@@ -373,7 +433,7 @@ If implementing class provides the implementation for the method then it is over
 
 #### Why to use default method
 
-If you want to add some additional functionality to the class using the method then we can use default method.
+If we want to add a new method to a interface which is already used by other classes and without breaking the code(if your interface contains a method, it generally needs to be overriden by the implementing class. Now, if we add a additional method it must be implemented by the classes that were previously implementing the given interface if not then it will give a compilation error hence will break) then we can use the `default` methods.
 
 ```java
 interface C {
@@ -427,6 +487,24 @@ public class MainClass
 }
 ```
 
+## Interface extending interface
+
+A interface can extend other interface. The interface which extends other interface must provide all implementations of extended interface.
+
+```java
+interface A {
+    void meth1();
+}
+interface B extends A {
+    void meth2();
+}
+class MainClass implements B {
+    void meth1() {
+        sysout("Something");
+    }
+}
+```
+
 ## intreface vs abstract classes
 
 |interface|Abstrct class|
@@ -455,25 +533,8 @@ class MainClass extends A implements I {
 }
 ```
 
-## Interface extending interface
 
-A interface can extend other interface. The interface which extends other interface must provide all implementations of extended interface.
-
-```java
-interface A {
-    void meth1();
-}
-interface B extends A {
-    void meth2();
-}
-class MainClass implements B {
-    void meth1() {
-        sysout("Something");
-    }
-}
-```
-
-## Comparable versus Comparator
+## Comparable and Comparator
 
 The interfaces Comparable and Comparator both provide a way to sort the collections. Collections have a ```sort()``` method which helps in sorting a collections.
 For e.g. we can sort a arraylist named studentList using the ```Collections.sort(studentList)``` so general syntax for sorting a colleaction can be written as:
@@ -486,10 +547,12 @@ We can also pass in a another class object to sort along with Collection_name wh
 
 ### Comparable
 
-The comparable interface defines single method named ```compareTo()```. This method is used to sort the collection, it is defined inside the domain class for which we want to sort elements. For e.g. if we have a Student class for which we have a array list of students which we want to sort according to the roll number. We can implement the Comparable interface in the Student class and then override the ```compareTo()``` method. Then we can sort collection using the ``` Collections.sort()```. See below example:
+The comparable interface defines single method named ```compareTo(Object o)``` This method is used to sort the collection, it is defined inside the domain class for which we want to sort elements. The method contains a parameter as domain class object and returns a integer -ve,0,+ve. For e.g. if we have a Student class which we used to create list of students and we want to sort according to the roll number. We can implement the Comparable interface in the Student class and then override the ```compareTo(Student s)``` method. Then we can sort collection using the ``` Collections.sort(s1)``` 
+
+See below example:
 
 ```java
-public class Student implements Comparable<Student> {
+public class Student implements Comparable<Student> { 
     String name;
     int id;
     int age;
@@ -551,20 +614,20 @@ class MainClass {
 declares the core methods that all collections will have,
     Methods:
 
-1. boolean add(E obj) - adds obj to invoking collection
-2. boolean addAll(Collection<? extends E> c) - adds all elements to invoking collection from the passed collection
-3. void clear() - removes all elements from invoking collection
-4. boolean contains(E obj) - if obj exists returns true else false
-5. boolean containsAll(Collection<?> c) - returns true if all elements of c is present in invoking collection
-6. boolean equals(Object obj) - returnd true if invoking collection is equal to the obj
-7. int hashCode() - return hashcode for invoking collection
-8. boolean isEmpty() - return true if invoking function is empty
-9. Iterator<E> iterator() - returns iterator for invoking collection
-10. boolean remove(Object obj) - removes obj from invoking collection and returns true if successful
-11. boolean removeAll(Collection<?>c) - removes all elements of 'c' from invoking collection
-12. int size() - returns the size of the invoking set
-13. Stream<E> stream() - returns stream for the given collection
-14. Object[] toArray() - returns array
+1. `boolean add(E obj)` - adds obj to invoking collection
+2. `boolean addAll(Collection<? extends E> c)` - adds all elements to invoking collection from the passed collection
+3. `void clear()` - removes all elements from invoking collection
+4. `boolean contains(E obj)` - if obj exists returns true else false
+5. `boolean containsAll(Collection<?> c)` - returns true if all elements of c is present in invoking collection
+6. `boolean equals(Object obj)` - returnd true if invoking collection is equal to the obj
+7. `int hashCode()` - return hashcode for invoking collection
+8. `boolean isEmpty()` - return true if invoking function is empty
+9. `Iterator<E> iterator()` - returns iterator for invoking collection
+10. `boolean remove(Object obj)` - removes obj from invoking collection and returns true if successful
+11. `boolean removeAll(Collection<?>c)` - removes all elements of 'c' from invoking collection
+12. `int size()` - returns the size of the invoking set
+13. `Stream<E> stream()` - returns stream for the given collection
+14. `Object[] toArray()` - returns array
 
 ### List
 
@@ -572,30 +635,30 @@ stores a sequence of elements, uses a zero-based index, null elements are not al
 A list may contain duplicate element,
 Methods:
 
-1. void add(int index, E obj) - Inserts obj into invoking list at the index passed
-2. boolean addAll(int index, Collection<? extends E>c) - adds collection values at specified index. returns true if list is changed
-3. int indexOf(Object obj) - returns first occurence index of object
-4. int lastIndexOf(Object obj) - returns index of last occurence of the 'obj' in list, if not present -1 is returned
-5. static <E> List<E> of(parameters) - returns a list of lists which are passed as parameters to 'of'
-6. ListIteratort<E> listIterator() /(int index) - returns iterator for the list / starting from the index
-7. E remove(int index) - removes and returns removed element
-8. void replaceAll(UnaryOperator<E> op) - we can change all the elements of the list with given op object, which can be defined by a class implementing UnaryOperator<E> interface and overriding apply method (apply specifies the operation to be performed on list elements)
-9. void sort(Comparator<? super E> comp) - sorts the list as per the comparator specified
-10. List<E> subList(int start,int end) - returns sub list from start index to end
+1. `void add(int index, E obj)` - Inserts obj into invoking list at the index passed
+2. `boolean addAll(int index, Collection<? extends E>c)` - adds collection values at specified index. returns true if list is changed
+3. `int indexOf(Object obj)` - returns first occurence index of object
+4. `int lastIndexOf(Object obj)` - returns index of last occurence of the 'obj' in list, if not present -1 is returned
+5. `static <E> List<E> of(parameters)` - returns a list of lists which are passed as parameters to 'of'
+6. `ListIteratort<E> listIterator() /(int index)` - returns iterator for the list / starting from the index
+7. `E remove(int index)` - removes and returns removed element
+8. `void replaceAll(UnaryOperator<E> op)` - we can change all the elements of the list with given op object, which can be defined by a class implementing UnaryOperator<E> interface and overriding apply method (apply specifies the operation to be performed on list elements)
+9. `void sort(Comparator<? super E> comp)` - sorts the list as per the comparator specified
+10. `List<E> subList(int start,int end)` - returns sub list from start index to end
 
 ### Set
 
 Set is collection of the unique set of elements.
 Null values are not allowed inside the set.
-static<E> Set<E> copyOf(Collection<? extends E> coll) - returns a unmodifiable set of 'coll'.
+`static<E> Set<E> copyOf(Collection<? extends E> coll)` - returns a unmodifiable set of 'coll'.
 
 #### SortedSet - Declares the behaviour of a set in sorted ascending order
 
-1. E first() - returns first element in the list
-2. E last() - returns last element in the list
-3. SortedSet<E> headSet(E end) - returns the set with values less than end
-4. SortedSet<E> tailSet(E start) - returns the set with values greater than start
-5. SortedSet<E> subSet(E start, E end) - returns the set greater than start and less than end
+1. `E first()` - returns first element in the list
+2. `E last()` - returns last element in the list
+3. `SortedSet<E> headSet(E end)` - returns the set with values less than end
+4. `SortedSet<E> tailSet(E start)` - returns the set with values greater than start
+5. `SortedSet<E> subSet(E start, E end)` - returns the set greater than start and less than end
 
 #### NavigableSet
 
@@ -650,14 +713,14 @@ Double-ended queues can function as standard,first-in, first-out queues or as la
 A map is an object that stores key and value pairs. The map interface contains a inner interface called Entry<K,V> which defines each entry's structure inside the map.
 Map has following methods:
 
-1. V put(K k,V v) - Adds the specified value if key is not present and if key is present it overrides the value. returns null if key was not present and old value if present.
-2. void putAll(Map<..> m) - adds all entries into the map/
-3. V putIfAbsent(K k, V v) - checks if the specified key is not already associated with a value (or is mapped to null), if not then associates it with the given value and returns null, else returns the mapped value
-4. V remove(K) - removes mapping with key K and returns value if present else returns null
-5. boolean remove(K,V) - removes and returns true if K and V are mapped, else returns false
-6. V replace(K,V) - the previous value associated with the specified key, or null if there was no mapping for the key
-7. void clear() - removes all the key-value mappings
-8. V compute(K,BiFunction) - the value is calculated using the BiFunction using the provided inputs and is added map and returned, if func returns null then null is added
+1. `V put(K k,V v)` - Adds the specified value if key is not present and if key is present it overrides the value. returns null if key was not present and old value if present.
+2. `void putAll(Map<..> m)` - adds all entries into the map/
+3. `V putIfAbsent(K k, V v)` - checks if the specified key is not already associated with a value (or is mapped to null), if not then associates it with the given value and returns null, else returns the mapped value
+4. `V remove(K)` - removes mapping with key K and returns value if present else returns null
+5. `boolean remove(K,V)` - removes and returns true if K and V are mapped, else returns false
+6. `V replace(K,V)` - the previous value associated with the specified key, or null if there was no mapping for the key
+7. `void clear()` - removes all the key-value mappings
+8. `V compute(K,BiFunction)` - the value is calculated using the BiFunction using the provided inputs and is added map and returned, if func returns null then null is added
 
 ## Collection classes
 
@@ -733,9 +796,9 @@ Constructors -
 
 ## How Key value pairs are stored inside the hash map
 
-The hash map contains a table which is first initialized with the 16 buckets, these buckets are then filled with the nodes (A map node contains hash, key, value and next variables).
+The hash map contains a table which is first initialized with the 16 buckets(empty array with the 16), these buckets are then filled with the nodes (A map node contains hash, key, value and next variables)
 
-These buckets are filled with the nodes. For each insertion of node we calculate a hash value using the key-value pair which is used to find the index at which the node is to be stored.
+These buckets are filled with the nodes. For each insertion of node we calculate a hash value using the key which is used to find the index at which the node is to be stored.
 
 If hash collision occurs then we store this new node in linked list by assigning the reference of new node to the next variable. It can happen that even though the hash is different for two nodes they might be mapped to same index, in such cases as well we add the node to this linked list.
 
@@ -747,12 +810,12 @@ For getting a value from hashmap, we use get method which calculates the hash va
 
 | final | finally | finalize |
 | ---   | ---     | ---      |
-| 'final' is access specifier | 'finally' is used to define the code that must be executed after a exception occurs | 'finzlize' is called by 'JVM' when object does not have any references and is going to be garbage collected. |
+| 'final' is access specifier | 'finally' is used to define the code that must be executed after a exception occurs | 'finalize' is called by 'JVM' when object does not have any references and is going to be garbage collected. |
 
 
 ## Lambda
 
-One issue with anonymous classes is that if the implementation of your anonymous class is very simple, such as an interface that contains only one method, then the syntax of anonymous classes may  unwieldy and unclear. In these cases, you're usually trying to pass functionality as an argument to another method, such as what action should be taken when someone clicks a button. Lambda expressions enable you to do this, to treat functionality as method argument
+One issue with anonymous classes is that if the implementation of your anonymous class is very simple interface that contains only one method, then the syntax of anonymous classes may  unwieldy and unclear. In these cases, you're usually trying to pass functionality as an argument to another method, such as what action should be taken when someone clicks a button. Lambda expressions enable you to do this, to treat functionality as method argument
 
 Lambdas are instances of functional interfaces
 
@@ -818,4 +881,44 @@ We also have many standard functional interfaces which reduces the code by provi
 ```java
 // Write examples here 
 ```
+
+
+## Java Functional Programming
+
+
+
+### Streams
+
+Java Streams API converts the data in the form of a stream irrespective of its origin so it can convert a ArrayList, TreeSet or a queue to a stream of data.
+
+How Stream is related to the Functional Programming?
+
+
+
+Functions in Stream
+
+`forEach(Consumer<Type>accept)` : executes an operation on each element in the stream
+
+`sorted()` : creates a new stream with the sorted elements (Intermediate Operation)
+
+`min(Comparator<Type> compare)` : it returns a minimum in the form of the Optional object as per the defined `compare` method.Same thing is there for the `max` operation (Termincal operation)
+
+`count()` : returns the number of elements in the stream (Termincal operation)
+
+`distinct()` : returns a stream which conatins distinct elements for the stream (Intermediate operation)
+
+`skip(numOfEleToSkip)` : skips the specified number of the elements from the stream and returns the remaining elements in the stream.(Intermediate operations)
+
+`limit(numOfEleThatStreamShouldContain)` : creates a strean from the given stream which conatins the specified number of elements. (Intermediate operations)
+
+`filter(Predicate<Type>pred)` : the filter method returns a new stream with the elements that satisfy the `test` method defined by the predicate (Intermediate Operation)
+
+`collect(Collectors.methodToCollect())` : We usually convert a collection to the stream to go other way around we use the collect method which contains the method 
+
+`findFirst()` : When we want to return the first element from the stream
+
+`orElse(elementToReturn)` : specifies the element to return if previous operation returns the null value for previous operation
+
+
+
 
