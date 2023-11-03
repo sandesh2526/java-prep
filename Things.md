@@ -84,6 +84,34 @@ Java code is first compiled into java bytecode and stored in a classfile(once a 
 
 This Bytecode is then fed to JVM where it is optimised using JIT and interpreted into source code and then executed.
 
+## S.O.L.I.D principles
+
+SOLID are principles which defines a good programming pardigm to create a maintainable and robust code.
+
+### <b>S</b>ingle responsibility
+
+All classes should have single responsibility, if we are defining a model class which we want to persist from the database it should only give us the data fields and methods which helps in persisting. The model class should not define the functionalities which have any other purpose than being a model to persist data, for example it should not define the methods which helps in data persistance.
+
+### <b>O</b>pen-Closed class
+
+A class should be open for the extension but should be closed for the modification. Let's say we have developed a application which can be used to persist student data and now we want to replace a functionality for example let's say we had some class which used to defines the utilities for the student and we want to add some new methods. As we are doing this we want to make sure that previous code should not be broken. To acheive this we should not modify the existing class i.e. it should be <b>closed</b> for the modification but at the same time we should be able to inherit its exisisting functionalities i.e. the class should be <b>open</b> for extension.
+
+### Liskov's Sustitution Principle
+
+It defines that a parent class reference should be able to refer to a child class object. So in previous principle we are adding different things in the child class. Let's say that we have some other classes which used this class's object and now we want to make sure that the class will not break even if we provide the new class object to it. So in this case we should be able to substitute the old class object with new class object.
+
+### Interface Segregation
+
+This principle says that we should segregate the [interfaces](#interfaces) i.e. should split them into new interfaces if it contains a lot of methods. 
+
+Consider a interface which defines utilities such as sort, calculateAverage. Now a class defining that interface must define all of its methods. So if we want to change a implementation of a particular method we will need a class which will have define all the methods. Therefore we should segregate the interface so that we should be able to change any of functionality as we want.
+
+### Dependency Inversion
+
+The principle states that high-level modules should not depend on low-level modules; both should depend on abstractions.
+
+So if we define the DAO classes directly then we do not provide a standard API through which we can define different methods and access them. But if we define a abstraction between them we can use that abstraction to create differnt classes of DAO classes for different databases. In java we can define a interface as abstraction and it can have various implementation. 
+
 ## Three OOP principles
 
 ### Encapsulation
