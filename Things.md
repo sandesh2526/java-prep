@@ -58,6 +58,7 @@
 
 [final vs finally vs finalize](#final-vs-finally-vs-finalize)
 
+[Java Functional Programming](#java-functional-programming)
 
 
 ## Features of Java
@@ -905,11 +906,11 @@ The streams is a way of doing things rather than implementing how to do things. 
 
 `forEach(Consumer<Type>accept)` : executes an operation on each element in the stream
 
+`map()` : map is used to perform a certain operation on each element of a stream and returns the resulting stream.
+
+`flatMap()` : flatMap is used to combine streams into one stream and then we can add other operations to the newly created streams. for e.g. [[1,2],[3,4]] -> [1,2,3,4]
+
 `sorted()` : creates a new stream with the sorted elements (Intermediate Operation)
-
-`min(Comparator<Type> compare)` : it returns a minimum in the form of the Optional object as per the defined `compare` method.Same thing is there for the `max` operation (Termincal operation)
-
-`count()` : returns the number of elements in the stream (Termincal operation)
 
 `distinct()` : returns a stream which conatins distinct elements for the stream (Intermediate operation)
 
@@ -925,6 +926,9 @@ The streams is a way of doing things rather than implementing how to do things. 
 
 `orElse(elementToReturn)` : specifies the element to return if previous operation returns the null value for previous operation(Terminal function)
 
+`min(Comparator<Type> compare)` : it returns a minimum in the form of the Optional object as per the defined `compare` method.Same thing is there for the `max` operation (Termincal operation)
+
+`count()` : returns the number of elements in the stream (Termincal operation)
 
 
 
