@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.print.attribute.IntegerSyntax;
 
@@ -26,7 +29,12 @@ public class TestThings {
     }
 
     public static void main(String[] args) {
-
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(56);
+        treeSet.add(4);
+        List<Integer> l = treeSet.stream()
+                .collect(Collectors.toList());
+        System.out.println(l.get(0));
         Collection<Integer> a = Arrays.asList(1, 2, 3, 5, 6, 6, 8, 2, 5, 9, 9, 9);
         a.stream().forEach(System.out::println);
         Map<String, Integer> m = new TreeMap<>();

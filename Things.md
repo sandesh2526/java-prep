@@ -110,7 +110,7 @@ Consider a interface which defines utilities such as sort, calculateAverage. Now
 
 The principle states that high-level modules should not depend on low-level modules; both should depend on abstractions.
 
-So if we define the DAO classes directly then we do not provide a standard API through which we can define different methods and access them. But if we define a abstraction between them we can use that abstraction to create differnt classes of DAO classes for different databases. In java we can define a interface as abstraction and it can have various implementation. 
+So if we define the DAO classes directly and we do not provide a standard API through which we can define different methods and access them. But if we define a abstraction between them we can use that abstraction to create differnt classes of DAO classes for different databases. In java we can define a interface as abstraction and it can have various implementation. 
 
 ## Three OOP principles
 
@@ -758,9 +758,9 @@ ArrayList class extends AbstractList and implements the List interface
 ArrayList is a dynamic array with the indexed elements, accessing the elements is fast
 ArrayList has Three Constructors:
 
-ArrayList() - creates empty list
-ArrayList(Collection<? extends E> c) - ArrayList with constructor arg as collection
-ArrayList(int capacity) - builds an arrayList with initial capacity
+1. ArrayList() - creates empty list
+2. ArrayList(Collection<? extends E> c) - ArrayList with constructor arg as collection
+3. ArrayList(int capacity) - builds an arrayList with initial capacity
 
 ### LinkedList
 
@@ -768,8 +768,8 @@ Linked List class extends AbstractSequentialList and implements the
 List, Deque, and Queue interfaces
 This enables us to use the doubly linked list so the update and delete operations will be fast
 have 2 constructors:
-LinkedList() - creates empty list
-LinkedList(Collection<? extends E> c) - LinkedList with constructor arg as collection
+1. LinkedList() - creates empty list
+2. LinkedList(Collection<? extends E> c) - LinkedList with constructor arg as collection
 
 ### HashSet
 
@@ -783,7 +783,7 @@ The HashSet has for constructors:
 4. HashSet(int capacity, float fillRatio) - creates HashSet with given capacity and fillRation(load factor)
 
 Methods Avaialable:
-boolean - add/All(E), remove/All(E),conains/All(E), isEmpty(), retainAll(Collection)
+boolean - add/All(E), remove/All(E), contains/All(E), isEmpty(), retainAll(Collection)
 void - clear()
 int - size()
 
@@ -795,8 +795,7 @@ It has same methods as the hashset
 
 ### TreeSet
 
-TreeSet extends AbstractSet and implements the NavigableSet interface. It
-creates a collection that uses a tree for storage. Objects are stored in sorted, ascending order.
+TreeSet extends AbstractSet and implements the NavigableSet interface. It creates a collection that uses a tree for storage. Objects are stored in sorted, ascending order.
 
 It defines following four constructors:
 
@@ -824,7 +823,7 @@ Constructors -
 
 ## How Key value pairs are stored inside the hash map
 
-The hash map contains a table which is first initialized with the 16 buckets(empty array with the 16), these buckets are then filled with the nodes (A map node contains hash, key, value and next variables)
+The hash map contains a table which is first initialized with the 16 buckets(empty array with size 16), these buckets are then filled with the nodes (A  map node contains hash, key, value and next variables)
 
 These buckets are filled with the nodes. For each insertion of node we calculate a hash value using the key which is used to find the index at which the node is to be stored.
 
