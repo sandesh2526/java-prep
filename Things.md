@@ -58,6 +58,7 @@
 
 [final vs finally vs finalize](#final-vs-finally-vs-finalize)
 
+[Java Functional Programming](#java-functional-programming)
 
 
 ## Features of Java
@@ -918,19 +919,25 @@ We also have many standard functional interfaces which reduces the code by provi
 
 Java Streams API converts the data in the form of a stream irrespective of its origin so it can convert a ArrayList, TreeSet or a queue to a stream of data.
 
-How Stream is related to the Functional Programming?
+#### How Stream is related to the Functional Programming?
 
+As the stream is a sequence of the data, we usually filter, perform operations on the stream using the functions. These functions are of two types: 
 
+1. Intermediate Functions - This type of functions use the stream to filter/modify a stream and <i>returns a stream</i>
 
-Functions in Stream
+2. Terminal Functions - The functions which <i>returns a stream object or a value</i> is a terminal function. 
+
+The streams is a way of doing things rather than implementing how to do things. Hence it uses different functions extensively.
+
+#### Functions in Stream
 
 `forEach(Consumer<Type>accept)` : executes an operation on each element in the stream
 
+`map()` : map is used to perform a certain operation on each element of a stream and returns the resulting stream.
+
+`flatMap()` : flatMap is used to combine streams into one stream and then we can add other operations to the newly created streams. for e.g. [[1,2],[3,4]] -> [1,2,3,4]
+
 `sorted()` : creates a new stream with the sorted elements (Intermediate Operation)
-
-`min(Comparator<Type> compare)` : it returns a minimum in the form of the Optional object as per the defined `compare` method.Same thing is there for the `max` operation (Termincal operation)
-
-`count()` : returns the number of elements in the stream (Termincal operation)
 
 `distinct()` : returns a stream which conatins distinct elements for the stream (Intermediate operation)
 
@@ -940,12 +947,15 @@ Functions in Stream
 
 `filter(Predicate<Type>pred)` : the filter method returns a new stream with the elements that satisfy the `test` method defined by the predicate (Intermediate Operation)
 
-`collect(Collectors.methodToCollect())` : We usually convert a collection to the stream to go other way around we use the collect method which contains the method 
+`collect(Collectors.methodToCollect())` : We usually convert a collection to the stream to go other way around we use the collect method which contains the method(Terminal function) 
 
-`findFirst()` : When we want to return the first element from the stream
+`findFirst()` : When we want to return the first element from the stream(Terminal Operation)
 
-`orElse(elementToReturn)` : specifies the element to return if previous operation returns the null value for previous operation
+`orElse(elementToReturn)` : specifies the element to return if previous operation returns the null value for previous operation(Terminal function)
 
+`min(Comparator<Type> compare)` : it returns a minimum in the form of the Optional object as per the defined `compare` method.Same thing is there for the `max` operation (Termincal operation)
+
+`count()` : returns the number of elements in the stream (Termincal operation)
 
 
 
