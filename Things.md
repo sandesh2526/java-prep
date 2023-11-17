@@ -917,7 +917,7 @@ We also have many standard functional interfaces which reduces the code by provi
 
 ### Streams
 
-Java Streams API converts the data in the form of a stream irrespective of its origin so it can convert a ArrayList, TreeSet or a queue to a stream of data.
+Java Streams API converts the data in the form of a stream irrespective of its origin so it can convert an ArrayList, TreeSet or a queue to a stream of data of a particular type.
 
 #### How Stream is related to the Functional Programming?
 
@@ -957,5 +957,5 @@ The streams is a way of doing things rather than implementing how to do things. 
 
 `count()` : returns the number of elements in the stream (Termincal operation)
 
-
+`findFirst()` : This method returns the first element of a stream or an empty Optional. If the stream has no encounter order, any element is returned, as it's ambiguous which is the first one anyway. 
 
