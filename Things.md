@@ -147,7 +147,7 @@ Inheritance: Inheritance is an “is-a” type of relationship. It is a parent-c
 
 Association: Association is a relationship between two separate classes that establishes through their objects. It can be one-to-one, one-to-many, many-to-one, or many-to-many. In OOP, an object communicates with another object to use functionality and services provided by that object 2.
 
-Composition: Composition is a “part-of” type of relationship. It is a strong type of association where the lifetime of the contained object depends on the lifetime of the container object. For example, a car has an engine.
+Composition: Composition is a “part-of” type of relationship. It is a strong type of association where the lifetime of the contained object depends on the lifetime of the container object. For example, engine is part of a car.
 
 Aggregation: Aggregation is a “has-a” type of relationship and is a one-way form of association. It is a weak type of association where the lifetime of the contained object does not depend on the lifetime of the container object. For example, a department has employees 
 
